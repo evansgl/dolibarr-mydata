@@ -220,7 +220,7 @@ while ($row = $result->fetch_assoc())
 		$counterpart_name = "";
 		$exchangeRate="";
 	}
-        //Apodeiksi Lianikis Ypiresion (GR+EU)
+	//Apodeiksi Lianikis Ypiresion (GR+EU)
 	elseif ($mydata_type == 3){
 		$invtype = "11.2"; //ALY
 		$classificationCategory = "category1_3";
@@ -258,7 +258,7 @@ while ($row = $result->fetch_assoc())
 
 	}
 
-/*	
+/*
 	echo $classificationType;
 	echo "-";
 	echo $invtype;
@@ -266,7 +266,7 @@ while ($row = $result->fetch_assoc())
 	echo $counterpart_name;
 	echo "-";
 	echo $mydata_type;
-*/	
+*/
 
 	// VAT Percentage
 	if ($vat_percent == 24) { $vat_categ = 1;}
@@ -297,6 +297,16 @@ while ($row = $result->fetch_assoc())
 		$inv_num = $num_prt[1];
 
 	}
+
+	//Do not use serial for apodeikseis
+	if (INVOICE_APODIXI_NUM == 1) {
+
+		if ($mydata_type == "2" || $mydata_type == "3")
+		{
+			$inv_series = "0";
+			$inv_num = $num_prt[0] ;		
+		}
+	}	
 
 
 	//Run mydata post

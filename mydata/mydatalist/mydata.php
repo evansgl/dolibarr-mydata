@@ -41,21 +41,21 @@ xsi:schemaLocation="http://www.aade.gr/myDATA/invoice/v1.0 schema.xsd">
 
 if ($mydata_type == 0 || $mydata_type ==1){
 
-$body.='
+	$body.='
 
-<counterpart>
-<vatNumber>'.$vat.'</vatNumber> 
-<country>'.$country.'</country>
-<branch>0</branch>
-'.$counterpart_name.'
-<address>
-<street>'.$street.'</street>
-<number></number>
-<postalCode>'.$po.'</postalCode>
-<city>'.$city.'</city>
-</address>
-</counterpart>
-';
+		<counterpart>
+		<vatNumber>'.$vat.'</vatNumber> 
+		<country>'.$country.'</country>
+		<branch>0</branch>
+		'.$counterpart_name.'
+		<address>
+		<street>'.$street.'</street>
+		<number></number>
+		<postalCode>'.$po.'</postalCode>
+		<city>'.$city.'</city>
+		</address>
+		</counterpart>
+		';
 }
 
 $body.='
@@ -122,29 +122,32 @@ if (MYDATA_SUPPORT_MULTILINE == true){
 
 		$popup_div.= "<tr class='sb'><td class='sb'>$subprod_rang</td><td class='sb'>$subprod_desc</td><td class='sb'>$subprod_net</td><td class='sb'>$subprod_tax_percent</td><td class='sb'>$subprod_gross</td></tr>";
 
-		$body.='
+		// Ignore subline that has a zero value - AADE does not like zero valued lines -> https://mydata-dev.portal.azure-api.net/issues/5ef0b812c757301110596fb1
+		if ($subprod_net != 0 ) {
+			$body.='
 
-			<invoiceDetails>
-			<lineNumber>'.$subprod_rang.'</lineNumber>
-			<netValue>'.$subprod_net.'</netValue>
-			<vatCategory>'.$sub_vat_categ.'</vatCategory>
+				<invoiceDetails>
+				<lineNumber>'.$subprod_rang.'</lineNumber>
+				<netValue>'.$subprod_net.'</netValue>
+				<vatCategory>'.$sub_vat_categ.'</vatCategory>
 
 
-			<vatAmount>'.$subprod_tax.'</vatAmount>
-			'.$vatExemptionCategory.'
-			<lineComments>'.$subprod_desc.'</lineComments> 
+				<vatAmount>'.$subprod_tax.'</vatAmount>
+				'.$vatExemptionCategory.'
+				<lineComments>'.$subprod_desc.'</lineComments> 
 
-			<incomeClassification>
-			<N1:classificationType>'.$classificationType.'</N1:classificationType>
-			<N1:classificationCategory>'.$classificationCategory.'</N1:classificationCategory>
-			<N1:amount>'.$subprod_net.'</N1:amount>
-			</incomeClassification>
-			</invoiceDetails>
-			';
+				<incomeClassification>
+				<N1:classificationType>'.$classificationType.'</N1:classificationType>
+				<N1:classificationCategory>'.$classificationCategory.'</N1:classificationCategory>
+				<N1:amount>'.$subprod_net.'</N1:amount>
+				</incomeClassification>
+				</invoiceDetails>
+				';
+		}
 	}
 
 	$vat_percent = $popup_div;
-	 $vat_percent.= "</table></div>";
+	$vat_percent.= "</table></div>";
 } else
 
 {

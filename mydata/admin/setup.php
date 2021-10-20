@@ -101,6 +101,7 @@ $arrayofparameters = array(
 		'MYDATA_SEARCH_BYDATE'=>array('type'=>'yesno', 'enabled'=>1),
 		'MYDATA_FROM_DATE'=>array('type'=>'string', 'css'=>'minwidth300' ,'enabled'=>1),
 		'MYDATA_INVOICE_NAME'=>array('type'=>'yesno', 'enabled'=>1),
+		'INVOICE_APODIXI_NUM'=>array('type'=>'yesno', 'enabled'=>1),
                 'MYDATA_SUPPORT_MULTILINE'=>array('type'=>'yesno', 'enabled'=>1),
                 'MYDATA_COUNTRY_DEFAULT'=>array('type'=>'yesno', 'enabled'=>1),
 		//'MYDATA_MYPARAM6'=>array('type'=>'DropdownBox', 'enabled'=>1),
@@ -382,8 +383,6 @@ print '<br>';
 					print dol_nl2br($conf->global->{$constname});
 				} elseif ($val['type']== 'html') {
 					print  $conf->global->{$constname};
-					//  } elseif ($val['type']== 'sep') {
-					//             print 'sdfsdfsfsdfsdfsdfsdfs dfsd fds fs dfsd fsd f' ;
 
 			} elseif ($val['type'] == 'yesno') {
 				print ajax_constantonoff($constname);
