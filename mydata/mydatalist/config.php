@@ -7,7 +7,7 @@ define("VAT_NUMBER", $conf->global->MYDATA_AFM); // Your company's VAT number (o
 
 
 /* Select the syntax / name of your invoice - ONLY ONE SELECTION */
-define("INVOICE_NAME",$conf->global->MYDATA_MYDATA_INVOICE_NAME );    	// SERIES-YEAR-NUMBER E.g INV-2021-123
+define("INVOICE_NAME",$conf->global->MYDATA_INVOICE_NAME );    	// SERIES-YEAR-NUMBER E.g INV-2021-123
 //define("INVOICE_NAME","2");  	// SERIES-NUMBER E.g FA231-123
 
 /* Search Criteria - ONLY ONE SELECTION!*/
@@ -27,7 +27,7 @@ define("VAT_EXEMP_CATEG_EU",  $conf->global->MYDATA_VAT_EXEMP_CATEG_EU);  // Inv
 define("VAT_EXEMP_CATEG_3RD", $conf->global->MYDATA_VAT_EXEMP_CATEG_3RD); // Invoice Type 3rd Countries
 
 //8.8 Κωδικός Κατηγορίας Χαρακτηρισμού Εσόδων - Σελ48
-define("CLASSIFICATION_CATEGORY", $conf->global->MYDATA_CLASSIFICATION_CATEGORY); // Classification Category
+//define("CLASSIFICATION_CATEGORY", $conf->global->MYDATA_CLASSIFICATION_CATEGORY); // Classification Category
 //8.9 Κωδικός Τύπου Χαρακτηρισμού Εσόδων - Σελ50
 define("CLASSIFICATION_TYPE_GR", $conf->global->MYDATA_CLASSIFICATION_TYPE_GR); // Classification Type Category for GR
 define("CLASSIFICATION_TYPE_EU", $conf->global->MYDATA_CLASSIFICATION_TYPE_EU); // Classification Type Category for EU

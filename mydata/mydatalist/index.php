@@ -167,7 +167,8 @@ while ($row = $result->fetch_assoc())
 	$currency = $row["multicurrency_code"];
 	$forex = number_format($row["multicurrency_tx"],2,'.','');
 	$forex_total = number_format($row["multicurrency_total_ttc"],2,'.','');
-	$tax = number_format($row["multicurrency_total_tva"],2);
+	$tax = number_format($row["multicurrency_total_tva"],2,'.',''); //Fixed after dkalivis reported bug
+	
 	$mydata_type =  $row["mydata_type"];
 
 	$eu_countries = array("AT","BE","BG","CY","CZ","DE","DK","EE","ES","FI","FR","HU","HR","IE","IT","LT","LU","LV","MT","NL","PL","PT","RO","SE","SI","SK");
@@ -234,7 +235,7 @@ while ($row = $result->fetch_assoc())
 		if (in_array($country, $local_country, TRUE )){
 			$invtype = "1.1"; //Timolog Polisis GR
 			$classificationType = CLASSIFICATION_TYPE_GR;
-			$classificationCategory = CLASSIFICATION_CATEGORY;
+			$classificationCategory = "category1_1";
 			$vatExemptionCategory = "";
 			$counterpart_name = "";
 			$exchangeRate="";
@@ -242,7 +243,7 @@ while ($row = $result->fetch_assoc())
 		else if (in_array($country, $eu_countries, TRUE )){
 			$invtype = "1.2"; //Timolog Polisis EU
 			$classificationType = CLASSIFICATION_TYPE_EU;
-			$classificationCategory = CLASSIFICATION_CATEGORY;
+                        $classificationCategory = "category1_1";
 			$vatExemptionCategory = "<vatExemptionCategory>".VAT_EXEMP_CATEG_EU."</vatExemptionCategory>";
 			$counterpart_name = "<name>".$dealer."</name>";
 			$exchangeRate="";
@@ -250,7 +251,7 @@ while ($row = $result->fetch_assoc())
 		else {
 			$invtype = "1.3"; //Timolog Polisis 3RD
 			$classificationType = CLASSIFICATION_TYPE_3RD;
-			$classificationCategory = CLASSIFICATION_CATEGORY;
+                        $classificationCategory = "category1_1";
 			$vatExemptionCategory = "<vatExemptionCategory>".VAT_EXEMP_CATEG_3RD."</vatExemptionCategory>";
 			$counterpart_name = "<name>".$dealer."</name>";
 			$exchangeRate= "<exchangeRate>".$forex."</exchangeRate>";

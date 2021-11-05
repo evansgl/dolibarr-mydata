@@ -104,7 +104,7 @@ if (MYDATA_SUPPORT_MULTILINE == true){
 	{
 
 		$subprod_rang = preg_replace('/\D/', '', $sub_row["rang"]);
-		$subprod_desc = html(substr($sub_row["description"],0,254)); //trim to 254 chars
+		$subprod_desc = substr($sub_row["description"],0,250); //trim to 250 chars
 		$subprod_net = number_format($sub_row["subprod_net"],2,'.','');
 		$subprod_tax_percent = $sub_row["subprod_tax_percent"];
 		$subprod_tax = number_format($sub_row["subprod_tax"],2,'.','');

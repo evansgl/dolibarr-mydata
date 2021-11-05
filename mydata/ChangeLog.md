@@ -1,6 +1,15 @@
 # CHANGELOG MYDATA FOR [DOLIBARR ERP CRM](https://www.dolibarr.org)
 
-# 1.4 
+# 1.5
+Bug: Fixes a bug in invoice numbering
+<br>
+Bug: Remove html parse on description. Trunkate to 250 chars
+<br>
+Bug: Fix multicurrency_total_tva reported by dkalivis
+<br>
+Bug: Fix CLASSIFICATION_CATEGORY. Old variable from old version
+
+## 1.4 
 Feature: Use dolibarr sql prefix for any sql query.
 <br>
 Feature: Keep only numeric characters in VATs.

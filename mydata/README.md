@@ -2,7 +2,12 @@
 
 ## Features
 
-This module sends invoices to AADE myDATA service
+This module sends invoices to AADE myDATA service.
+
+Developed by evansgl@gmail.com
+<br>
+For recommendations, bug reporting / paypal donations please use my email.
+</br>
 
 <!--
 ![Screenshot mydata](img/screenshot_mydata.png?raw=true "MyDATA"){imgmd}
