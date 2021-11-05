@@ -70,7 +70,7 @@ $body.='
 <paymentMethods>
 <paymentMethodDetails>
 <type>'.PAYMENT_METHOD.'</type>
-<amount>'.$forex_total.'</amount>
+<amount>'.$total.'</amount>
 </paymentMethodDetails>
 </paymentMethods>
 ';

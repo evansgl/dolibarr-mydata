@@ -8,6 +8,9 @@ Bug: Remove html parse on description. Trunkate to 250 chars
 Bug: Fix multicurrency_total_tva reported by dkalivis
 <br>
 Bug: Fix CLASSIFICATION_CATEGORY. Old variable from old version
+<br>
+Feature: Ignore zero valued lines in invoices
+<br>
 
 ## 1.4 
 Feature: Use dolibarr sql prefix for any sql query.
