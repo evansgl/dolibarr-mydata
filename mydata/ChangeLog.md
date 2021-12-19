@@ -1,5 +1,11 @@
 # CHANGELOG MYDATA FOR [DOLIBARR ERP CRM](https://www.dolibarr.org)
 
+# 1.6
+Bug: Fix extravalue types from previous module installations. THere was a bug that adae_check button was not available.
+<br>
+Feature: Support (Πιστωτικά τιμολόγια). Προς το παρόν υποστηρίζει πιστωτικά τιμολόγια για εμπορεύματα.
+<br>
+
 # 1.5
 Bug: Fixes a bug in invoice numbering
 <br>
