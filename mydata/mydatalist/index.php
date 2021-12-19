@@ -191,7 +191,7 @@ while ($row = $result->fetch_assoc())
 			$classificationCategory = "category1_3";
 			$classificationType = CLASSIFICATION_TYPE_GR;
 			$vatExemptionCategory = "";
-			$counterpart_name = "";
+                	$counterpart_name = "";
 			$exchangeRate="";
 		}
 		else if (in_array($country, $eu_countries, TRUE )){
@@ -230,6 +230,37 @@ while ($row = $result->fetch_assoc())
 		$counterpart_name = "";
 		$exchangeRate="";
 	}
+
+        //PISTOTIKO TIMOLOGIO ( Πώληση Εμπορευμάτων)
+        elseif ($mydata_type == 4){
+
+                if (in_array($country, $local_country, TRUE )){
+
+                        $invtype = "5.2";  //Pistotiko Timologio GR
+                        $classificationCategory = "category1_1";
+                        $classificationType = CLASSIFICATION_TYPE_GR;
+                        $vatExemptionCategory = "";
+                        $counterpart_name = "";
+                        $exchangeRate="";
+                }
+                else if (in_array($country, $eu_countries, TRUE )){
+                        $invtype = "5.2"; // Pistotiko Timolog Ypiresias EU
+                        $classificationCategory = "category1_1";
+                        $classificationType = CLASSIFICATION_TYPE_EU;
+                        $vatExemptionCategory = "<vatExemptionCategory>".VAT_EXEMP_CATEG_EU."</vatExemptionCategory>";
+                        $counterpart_name = "<name>".$dealer."</name>";
+                        $exchangeRate="";
+                }
+                else {
+                        $invtype = "5.2"; // Pistotiko Timolog Ypiresias 3RD
+                        $classificationCategory = "category1_1";
+                        $classificationType = CLASSIFICATION_TYPE_3RD;
+                        $vatExemptionCategory = "<vatExemptionCategory>".VAT_EXEMP_CATEG_3RD."</vatExemptionCategory>";
+                        $counterpart_name = "<name>".$dealer."</name>";
+                        $exchangeRate= "<exchangeRate>".$forex."</exchangeRate>";
+                }
+
+        }
 	else { //0
 		//Timologio Polisis
 		if (in_array($country, $local_country, TRUE )){

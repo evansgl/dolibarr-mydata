@@ -39,7 +39,7 @@ xsi:schemaLocation="http://www.aade.gr/myDATA/invoice/v1.0 schema.xsd">
 </issuer>
 ';
 
-if ($mydata_type == 0 || $mydata_type ==1){
+if ($mydata_type == 0 || $mydata_type == 1 || $mydata_type == 4){
 
 	$body.='
 
@@ -92,7 +92,7 @@ if (MYDATA_SUPPORT_MULTILINE == true){
 
 // Calculate Subproducts
 
-$query_subprod = "select rang,description,round(".$dolibarr_main_db_prefix."facturedet.multicurrency_total_ht,2) as subprod_net,round(tva_tx) as subprod_tax_percent,round(".$dolibarr_main_db_prefix."facturedet.multicurrency_total_tva,2) as subprod_tax,round(".$dolibarr_main_db_prefix."facturedet.multicurrency_total_ttc,2) subprod_gross  from ".$dolibarr_main_db_prefix."facture left join ".$dolibarr_main_db_prefix."facturedet on ".$dolibarr_main_db_prefix."facturedet.fk_facture = ".$dolibarr_main_db_prefix."facture.rowid where ".$dolibarr_main_db_prefix."facture.rowid =  '".$rowid."' order by rang asc";
+$query_subprod = "select rang,description,round(".$dolibarr_main_db_prefix."facturedet.total_ht,2) as subprod_net,round(tva_tx) as subprod_tax_percent,round(".$dolibarr_main_db_prefix."facturedet.total_tva,2) as subprod_tax,round(".$dolibarr_main_db_prefix."facturedet.total_ttc,2) subprod_gross  from ".$dolibarr_main_db_prefix."facture left join ".$dolibarr_main_db_prefix."facturedet on ".$dolibarr_main_db_prefix."facturedet.fk_facture = ".$dolibarr_main_db_prefix."facture.rowid where ".$dolibarr_main_db_prefix."facture.rowid =  '".$rowid."' order by rang asc";
 
 
 if (MYDATA_SUPPORT_MULTILINE == true){
@@ -102,9 +102,8 @@ if (MYDATA_SUPPORT_MULTILINE == true){
 	while ($sub_row = $result_subprod->fetch_assoc())
 
 	{
-
 		$subprod_rang = preg_replace('/\D/', '', $sub_row["rang"]);
-		$subprod_desc = substr($sub_row["description"],0,250); //trim to 250 chars
+                $subprod_desc = substr(html($sub_row["description"]),0,254);
 		$subprod_net = number_format($sub_row["subprod_net"],2,'.','');
 		$subprod_tax_percent = $sub_row["subprod_tax_percent"];
 		$subprod_tax = number_format($sub_row["subprod_tax"],2,'.','');
@@ -134,8 +133,7 @@ if (MYDATA_SUPPORT_MULTILINE == true){
 
 				<vatAmount>'.$subprod_tax.'</vatAmount>
 				'.$vatExemptionCategory.'
-				<lineComments>'.$subprod_desc.'</lineComments> 
-
+                                <lineComments>'.$subprod_desc.'</lineComments>
 				<incomeClassification>
 				<N1:classificationType>'.$classificationType.'</N1:classificationType>
 				<N1:classificationCategory>'.$classificationCategory.'</N1:classificationCategory>
@@ -177,7 +175,7 @@ $body.='
 <totalStampDutyAmount>0.00</totalStampDutyAmount>
 <totalOtherTaxesAmount>0.00</totalOtherTaxesAmount>
 <totalDeductionsAmount>0.00</totalDeductionsAmount>
-<totalGrossValue>'.$forex_total.' </totalGrossValue>
+<totalGrossValue>'.$total.' </totalGrossValue>
 <incomeClassification>	
 <N1:classificationType>'.$classificationType.'</N1:classificationType>
 <N1:classificationCategory>'.$classificationCategory.'</N1:classificationCategory>
