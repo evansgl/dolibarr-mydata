@@ -55,11 +55,11 @@ $con->set_charset("utf8mb4");
 
 $from_date = MYDATA_FROM_DATE ;
 
-$query_open_inv = "select COALESCE(mydata_type,0) as mydata_type,round((multicurrency_total_tva * 100) / multicurrency_total_ht,0) as vat_percent,".$dolibarr_main_db_prefix."facture.rowid,ref,mydata_reply,mydata_check,datef,nom,code,address,town,zip,tva_intra,total_ttc,".$dolibarr_main_db_prefix."facture.multicurrency_code,multicurrency_tx,multicurrency_total_ht,multicurrency_total_ttc,multicurrency_total_tva from ".$dolibarr_main_db_prefix."facture left join ".$dolibarr_main_db_prefix."societe on ".$dolibarr_main_db_prefix."societe.rowid = ".$dolibarr_main_db_prefix."facture.fk_soc left join ".$dolibarr_main_db_prefix."c_country on ".$dolibarr_main_db_prefix."c_country.rowid = ".$dolibarr_main_db_prefix."societe.fk_pays left join ".$dolibarr_main_db_prefix."facture_extrafields on ".$dolibarr_main_db_prefix."facture_extrafields.fk_object = ".$dolibarr_main_db_prefix."facture.rowid where fk_statut in (1,2,3,4,5) AND COALESCE(mydata_check,0) = 0 ORDER BY ref DESC";
+$query_open_inv = "select COALESCE(".$dolibarr_main_db_prefix."c_paiement.code,5) as payment_type,COALESCE(mydata_type,0) as mydata_type,round((multicurrency_total_tva * 100) / multicurrency_total_ht,0) as vat_percent,".$dolibarr_main_db_prefix."facture.rowid,ref,mydata_reply,mydata_check,datef,nom,".$dolibarr_main_db_prefix."c_country.code,address,town,zip,tva_intra,total_ttc,".$dolibarr_main_db_prefix."facture.multicurrency_code,multicurrency_tx,multicurrency_total_ht,multicurrency_total_ttc,multicurrency_total_tva from ".$dolibarr_main_db_prefix."facture left join ".$dolibarr_main_db_prefix."societe on ".$dolibarr_main_db_prefix."societe.rowid = ".$dolibarr_main_db_prefix."facture.fk_soc left join ".$dolibarr_main_db_prefix."c_country on ".$dolibarr_main_db_prefix."c_country.rowid = ".$dolibarr_main_db_prefix."societe.fk_pays left join ".$dolibarr_main_db_prefix."facture_extrafields on ".$dolibarr_main_db_prefix."facture_extrafields.fk_object = ".$dolibarr_main_db_prefix."facture.rowid LEFT JOIN llx_c_paiement on ".$dolibarr_main_db_prefix."c_paiement.id = ".$dolibarr_main_db_prefix."facture.fk_mode_reglement where fk_statut in (1,2,3,4,5) AND COALESCE(mydata_check,0) = 0 ORDER BY ref DESC";
 
-$query_from_date = "select COALESCE(mydata_type,0) as mydata_type,round((multicurrency_total_tva * 100) / multicurrency_total_ht,0) as vat_percent,".$dolibarr_main_db_prefix."facture.rowid,ref,mydata_reply,mydata_check,datef,nom,code,address,town,zip,tva_intra,total_ttc,".$dolibarr_main_db_prefix."facture.multicurrency_code,multicurrency_tx,multicurrency_total_ht,multicurrency_total_ttc,multicurrency_total_tva from ".$dolibarr_main_db_prefix."facture left join ".$dolibarr_main_db_prefix."societe on ".$dolibarr_main_db_prefix."societe.rowid = ".$dolibarr_main_db_prefix."facture.fk_soc left join ".$dolibarr_main_db_prefix."c_country on ".$dolibarr_main_db_prefix."c_country.rowid = ".$dolibarr_main_db_prefix."societe.fk_pays left join ".$dolibarr_main_db_prefix."facture_extrafields on ".$dolibarr_main_db_prefix."facture_extrafields.fk_object = ".$dolibarr_main_db_prefix."facture.rowid where fk_statut in (1,2,3,4,5) AND DATE(datef) >= '".$from_date."' AND COALESCE(mydata_check,0) = 0 ORDER BY ref DESC";
+$query_from_date = "select COALESCE(".$dolibarr_main_db_prefix."c_paiement.code,5) as payment_type,COALESCE(mydata_type,0) as mydata_type,round((multicurrency_total_tva * 100) / multicurrency_total_ht,0) as vat_percent,".$dolibarr_main_db_prefix."facture.rowid,ref,mydata_reply,mydata_check,datef,nom,".$dolibarr_main_db_prefix."c_country.code,address,town,zip,tva_intra,total_ttc,".$dolibarr_main_db_prefix."facture.multicurrency_code,multicurrency_tx,multicurrency_total_ht,multicurrency_total_ttc,multicurrency_total_tva from ".$dolibarr_main_db_prefix."facture left join ".$dolibarr_main_db_prefix."societe on ".$dolibarr_main_db_prefix."societe.rowid = ".$dolibarr_main_db_prefix."facture.fk_soc left join ".$dolibarr_main_db_prefix."c_country on ".$dolibarr_main_db_prefix."c_country.rowid = ".$dolibarr_main_db_prefix."societe.fk_pays left join ".$dolibarr_main_db_prefix."facture_extrafields on ".$dolibarr_main_db_prefix."facture_extrafields.fk_object = ".$dolibarr_main_db_prefix."facture.rowid LEFT JOIN llx_c_paiement on ".$dolibarr_main_db_prefix."c_paiement.id = ".$dolibarr_main_db_prefix."facture.fk_mode_reglement where fk_statut in (1,2,3,4,5) AND DATE(datef) >= '".$from_date."' AND COALESCE(mydata_check,0) = 0 ORDER BY ref DESC";
 
-$query_from_date_all = "select COALESCE(mydata_type,0) as mydata_type,round((multicurrency_total_tva * 100) / multicurrency_total_ht,0) as vat_percent,".$dolibarr_main_db_prefix."facture.rowid,ref,mydata_reply,mydata_check,datef,nom,code,address,town,zip,tva_intra,total_ttc,".$dolibarr_main_db_prefix."facture.multicurrency_code,multicurrency_tx,multicurrency_total_ht,multicurrency_total_ttc,multicurrency_total_tva from ".$dolibarr_main_db_prefix."facture left join ".$dolibarr_main_db_prefix."societe on ".$dolibarr_main_db_prefix."societe.rowid = ".$dolibarr_main_db_prefix."facture.fk_soc left join ".$dolibarr_main_db_prefix."c_country on ".$dolibarr_main_db_prefix."c_country.rowid = ".$dolibarr_main_db_prefix."societe.fk_pays left join ".$dolibarr_main_db_prefix."facture_extrafields on ".$dolibarr_main_db_prefix."facture_extrafields.fk_object = ".$dolibarr_main_db_prefix."facture.rowid where fk_statut in (1,2,3,4,5) AND DATE(datef) >= '2021-01-01' ORDER BY ref DESC";
+//echo $query_open_inv;
 
 if (MYDATA_SEARCH_BY == 1){
 	$query = $query_from_date;
@@ -122,19 +122,20 @@ if(!empty($_GET))
 <table id="mydata" class="display" style="width:100%">
 <thead>
 <tr>
-<th>Number</th> 
-<th>Date</th>
-<th>Customer</th>
-<th>Country</th>
-<th>VAT</th>
-<th>MyData Reply</th>
-<th>MyData Sent</th>
-<th>NET Value</th>
-<th>Tax</th>
-<th>VAT %</th>
-<th>Total</th>
-<th>Exchange Rate</th>
-<th>Total in Currency</th>
+<th>Σειρά-Αριθμός</th> 
+<th>Τύπος Παραστατικού</th>
+<th>Ημερομηνία</th>
+<th>Πελάτης</th>
+<th>Χώρα</th>
+<th>ΑΦΜ</th>
+<th>MyData Απάντηση</th>
+<th>MyData Απεσταλμένο</th>
+<th>Καθαρή Αξία</th>
+<th>Φόρος</th>
+<th>ΦΠΑ %</th>
+<th>Σύνολο</th>
+<th>Ισοτιμία Συναλλάγματος</th>
+<th>Συνολο σε συνάλλαγμα</th>
 </tr>
 </thead>
 <tbody>
@@ -162,13 +163,14 @@ while ($row = $result->fetch_assoc())
 	$vat = preg_replace('/\D/', '', $row["tva_intra"]);
 	$mydata = $row["mydata_reply"];
 	$mydata_check = $row["mydata_check"];
-	$net = number_format($row["multicurrency_total_ht"],2,'.','');
-	$total = number_format($row["total_ttc"],2,'.','');
+	$net = abs(number_format($row["multicurrency_total_ht"],2,'.',''));
+	$total = abs(number_format($row["total_ttc"],2,'.',''));
 	$currency = $row["multicurrency_code"];
-	$forex = number_format($row["multicurrency_tx"],2,'.','');
-	$forex_total = number_format($row["multicurrency_total_ttc"],2,'.','');
-	$tax = number_format($row["multicurrency_total_tva"],2,'.',''); //Fixed after dkalivis reported bug
-	
+	$forex = abs(number_format($row["multicurrency_tx"],2,'.',''));
+	$forex_total = abs(number_format($row["multicurrency_total_ttc"],2,'.',''));
+	$tax = abs(number_format($row["multicurrency_total_tva"],2,'.','')); //Fixed after dkalivis reported bug
+	$payment_type =  $row["payment_type"];
+
 	$mydata_type =  $row["mydata_type"];
 
 	$eu_countries = array("AT","BE","BG","CY","CZ","DE","DK","EE","ES","FI","FR","HU","HR","IE","IT","LT","LU","LV","MT","NL","PL","PT","RO","SE","SI","SK");
@@ -191,7 +193,7 @@ while ($row = $result->fetch_assoc())
 			$classificationCategory = "category1_3";
 			$classificationType = CLASSIFICATION_TYPE_GR;
 			$vatExemptionCategory = "";
-                	$counterpart_name = "";
+			$counterpart_name = "";
 			$exchangeRate="";
 		}
 		else if (in_array($country, $eu_countries, TRUE )){
@@ -231,36 +233,50 @@ while ($row = $result->fetch_assoc())
 		$exchangeRate="";
 	}
 
-        //PISTOTIKO TIMOLOGIO ( Πώληση Εμπορευμάτων)
-        elseif ($mydata_type == 4){
+	//PISTOTIKO TIMOLOGIO ( Πώληση Εμπορευμάτων)
+	elseif ($mydata_type == 4){
 
-                if (in_array($country, $local_country, TRUE )){
+		if (in_array($country, $local_country, TRUE )){
 
-                        $invtype = "5.2";  //Pistotiko Timologio GR
-                        $classificationCategory = "category1_1";
-                        $classificationType = CLASSIFICATION_TYPE_GR;
-                        $vatExemptionCategory = "";
-                        $counterpart_name = "";
-                        $exchangeRate="";
-                }
-                else if (in_array($country, $eu_countries, TRUE )){
-                        $invtype = "5.2"; // Pistotiko Timolog Ypiresias EU
-                        $classificationCategory = "category1_1";
-                        $classificationType = CLASSIFICATION_TYPE_EU;
-                        $vatExemptionCategory = "<vatExemptionCategory>".VAT_EXEMP_CATEG_EU."</vatExemptionCategory>";
-                        $counterpart_name = "<name>".$dealer."</name>";
-                        $exchangeRate="";
-                }
-                else {
-                        $invtype = "5.2"; // Pistotiko Timolog Ypiresias 3RD
-                        $classificationCategory = "category1_1";
-                        $classificationType = CLASSIFICATION_TYPE_3RD;
-                        $vatExemptionCategory = "<vatExemptionCategory>".VAT_EXEMP_CATEG_3RD."</vatExemptionCategory>";
-                        $counterpart_name = "<name>".$dealer."</name>";
-                        $exchangeRate= "<exchangeRate>".$forex."</exchangeRate>";
-                }
+			$invtype = "5.2";  //Pistotiko Timologio GR
+			$classificationCategory = "category1_1";
+			$classificationType = CLASSIFICATION_TYPE_GR;
+			$vatExemptionCategory = "";
+			$counterpart_name = "";
+			$exchangeRate="";
+		}
+		else if (in_array($country, $eu_countries, TRUE )){
+			$invtype = "5.2"; // Pistotiko Timolog Ypiresias EU
+			$classificationCategory = "category1_1";
+			$classificationType = CLASSIFICATION_TYPE_EU;
+			$vatExemptionCategory = "<vatExemptionCategory>".VAT_EXEMP_CATEG_EU."</vatExemptionCategory>";
+			$counterpart_name = "<name>".$dealer."</name>";
+			$exchangeRate="";
+		}
+		else {
+			$invtype = "5.2"; // Pistotiko Timolog Ypiresias 3RD
+			$classificationCategory = "category1_1";
+			$classificationType = CLASSIFICATION_TYPE_3RD;
+			$vatExemptionCategory = "<vatExemptionCategory>".VAT_EXEMP_CATEG_3RD."</vatExemptionCategory>";
+			$counterpart_name = "<name>".$dealer."</name>";
+			$exchangeRate= "<exchangeRate>".$forex."</exchangeRate>";
+		}
 
-        }
+	}
+
+	elseif ($mydata_type == 5){ //Pistoriko Lianikis
+
+		if (in_array($country, $local_country, TRUE )){
+
+			$invtype = "11.4";  //Pistotiko Timologio GR
+			$classificationCategory = "category1_2";
+			$classificationType = "E3_561_003";
+			$vatExemptionCategory = "";
+			$counterpart_name = "";
+			$exchangeRate="";
+		}
+	}
+
 	else { //0
 		//Timologio Polisis
 		if (in_array($country, $local_country, TRUE )){
@@ -274,7 +290,7 @@ while ($row = $result->fetch_assoc())
 		else if (in_array($country, $eu_countries, TRUE )){
 			$invtype = "1.2"; //Timolog Polisis EU
 			$classificationType = CLASSIFICATION_TYPE_EU;
-                        $classificationCategory = "category1_1";
+			$classificationCategory = "category1_1";
 			$vatExemptionCategory = "<vatExemptionCategory>".VAT_EXEMP_CATEG_EU."</vatExemptionCategory>";
 			$counterpart_name = "<name>".$dealer."</name>";
 			$exchangeRate="";
@@ -282,7 +298,7 @@ while ($row = $result->fetch_assoc())
 		else {
 			$invtype = "1.3"; //Timolog Polisis 3RD
 			$classificationType = CLASSIFICATION_TYPE_3RD;
-                        $classificationCategory = "category1_1";
+			$classificationCategory = "category1_1";
 			$vatExemptionCategory = "<vatExemptionCategory>".VAT_EXEMP_CATEG_3RD."</vatExemptionCategory>";
 			$counterpart_name = "<name>".$dealer."</name>";
 			$exchangeRate= "<exchangeRate>".$forex."</exchangeRate>";
@@ -290,15 +306,15 @@ while ($row = $result->fetch_assoc())
 
 	}
 
-/*
-	echo $classificationType;
-	echo "-";
-	echo $invtype;
-	echo "-";
-	echo $counterpart_name;
-	echo "-";
-	echo $mydata_type;
-*/
+	/*
+	   echo $classificationType;
+	   echo "-";
+	   echo $invtype;
+	   echo "-";
+	   echo $counterpart_name;
+	   echo "-";
+	   echo $mydata_type;
+	 */
 
 	// VAT Percentage
 	if ($vat_percent == 24) { $vat_categ = 1;}
@@ -341,6 +357,28 @@ while ($row = $result->fetch_assoc())
 	}	
 
 
+	switch ($mydata_type) {
+		case 0:
+			$mydata_type_str = "Τιμολόγιο Πώλησης";
+			break;
+		case 1:
+			$mydata_type_str = "Τιμολόγιο Παροχής Υπηρεσιών";
+			break;
+		case 2:
+			$mydata_type_str = "Απόδειξη Λιανικής";
+			break;
+		case 3:
+			$mydata_type_str = "Απόδειξη Παροχής Υπηρεσιών";
+			break;
+		case 4:
+			$mydata_type_str = "Πιστωτικό Τιμολόγιο";
+			break;
+		case 5:
+			$mydata_type_str = "Πιστωτικό Λιανικής";
+			break;
+	}
+
+
 	//Run mydata post
 	//print_r($_GET);
 	if (in_array("send", $_GET, true)) {
@@ -357,7 +395,11 @@ while ($row = $result->fetch_assoc())
 	echo "<tr>";
 
 	echo "<td>";
-	echo $num;
+	echo $inv_series ."-" . $inv_num;
+	echo "</td>";
+
+	echo "<td>";
+	echo $mydata_type_str;
 	echo "</td>";
 
 	echo "<td>";
@@ -386,11 +428,11 @@ while ($row = $result->fetch_assoc())
 	echo "</td>";
 
 	echo "<td>";
-	echo $net;
+	echo  number_format($net, 2, ',', '.');
 	echo "</td>";
 
 	echo "<td>";
-	echo $tax;
+	echo number_format($tax, 2, ',', '.');
 	echo "</td>";
 
 	echo "<td>";
@@ -398,7 +440,7 @@ while ($row = $result->fetch_assoc())
 	echo "</td>";
 
 	echo "<td>";
-	echo "EUR ". $total;
+	echo "EUR ". number_format($total, 2, ',', '.');
 	echo "</td>";
 
 	echo "<td>";
@@ -406,7 +448,7 @@ while ($row = $result->fetch_assoc())
 	echo "</td>";
 
 	echo "<td>";
-	echo $currency ." ".$forex_total;
+	echo $currency ." ".number_format($forex_total, 2, ',', '.');
 	echo "</td>";
 
 	echo "</tr>";
@@ -415,30 +457,13 @@ while ($row = $result->fetch_assoc())
 ?>
 </tbody>
 
-<tfoot>
-<tr>
-<th>Number</th>
-<th>Date</th>
-<th>Customer</th>
-<th>Country</th>
-<th>VAT</th>
-<th>MyData Reply</th>
-<th>MyData Sent</th>
-<th>NET Value</th>
-<th>Tax</th>
-<th>VAT %</th>
-<th>Total</th>
-<th>Exchange Rate</th>
-<th>Total in Currency</th>
-</tr>
-</tfoot>
 
 </table>
-<button onClick="window.location.href='mydataindex.php'">Refresh Page</button>
+<button onClick="window.location.href='mydataindex.php'">Ανανέωση Λίστας</button>
 <br>
 <br>
 <form class="form horizontal">
-<button class="btn btn-primary" type="submit" onClick="window.location.href='mydataindex.php?mydata=send'">Upload to MyDATA</button>
+<button class="btn btn-primary" type="submit" onClick="window.location.href='mydataindex.php?mydata=send'">Αποστολή στο MyDATA</button>
 </form>
 <br>
 <?php

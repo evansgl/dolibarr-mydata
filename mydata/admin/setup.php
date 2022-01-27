@@ -91,7 +91,7 @@ $arrayofparameters = array(
 		'MYDATA_CLASSIFICATION_TYPE_GR'=>array('type'=>'string', 'css'=>'minwidth300' ,'enabled'=>1),
 		'MYDATA_CLASSIFICATION_TYPE_EU'=>array('type'=>'string', 'css'=>'minwidth300' ,'enabled'=>1),
 		'MYDATA_CLASSIFICATION_TYPE_3RD'=>array('type'=>'string', 'css'=>'minwidth300' ,'enabled'=>1),
-		'MYDATA_PAYMENT_METHOD'=>array('type'=>'string', 'css'=>'minwidth300' ,'enabled'=>1),
+		//'MYDATA_PAYMENT_METHOD'=>array('type'=>'string', 'css'=>'minwidth300' ,'enabled'=>1),
 		//'MYDATA_TTT'=>array('type'=>'combo', 'enabled'=>1),
 		//'MYDATA_MYPARAM2'=>array('type'=>'textarea','enabled'=>1),
 		//'MYDATA_MYPARAM3'=>array('type'=>'category:'.Categorie::TYPE_CUSTOMER, 'enabled'=>1),
@@ -352,7 +352,7 @@ print '<br>';
 		print "<p>Note1: If you cannot view the configuration options below then you are missing one of the cricital php/pear modules for this dolibarr module</p> ";
 		print "<p>Note2: Make sure also that module 'mydata' is installed under custom/ directory of dolibarr</p>";
 		print "<br>";
-		set_include_path(DOL_DOCUMENT_ROOT."/custom/mydata/pear_modules/:usr/share/php/:/usr/share/pear/:/usr/lib/pear");
+		set_include_path(DOL_DOCUMENT_ROOT."/custom/mydata/pear_modules");
 //		echo get_include_path();
 
 		echo "<strong>PHP Modules required for myDATA</strong><br>";

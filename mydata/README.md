@@ -2,7 +2,7 @@
 
 ## Features
 
-This module sends invoices to AADE myDATA service.
+This module pushes invoices to AADE myDATA service.
 
 Developed by evansgl@gmail.com
 <br>

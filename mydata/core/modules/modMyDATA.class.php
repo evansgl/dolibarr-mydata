@@ -72,7 +72,7 @@ class modMyDATA extends DolibarrModules
 		$this->editor_url = '';
 
 		// Possible values for version are: 'development', 'experimental', 'dolibarr', 'dolibarr_deprecated' or a version string like 'x.y.z'
-		$this->version = '1.6';
+		$this->version = '1.7';
 		// Url to the file with your last numberversion of this module
 		//$this->url_last_version = 'http://www.example.com/versionmodule.txt';
 
@@ -431,8 +431,8 @@ class modMyDATA extends DolibarrModules
                 $result3=$extrafields->addExtraField('mydata_reply', "MyDATA Reply", 'varchar', 201,  255, 'facture',   0, 0, '', '', 1, '', 1, "AADE MARK code and date sent", '', '', '', '');
 		//$result2=$extrafields->addExtraField('mydata_myattr2', "New Attr 2 label", 'varchar', 1, 10, 'project',      0, 0, '', '', 1, '', 0, 0, '', '', 'mydata@mydata', '$conf->mydata->enabled');
 		//$result3=$extrafields->addExtraField('mydata_myattr3', "New Attr 3 label", 'varchar', 1, 10, 'bank_account', 0, 0, '', '', 1, '', 0, 0, '', '', 'mydata@mydata', '$conf->mydata->enabled');
-		$result4=$extrafields->addExtraField('mydata_type', "Είδος παραστατικού ΑΑΔΕ", 'select',  202, '', 'facture',   0, 0, '', array('options'=>array('0'=>'Τιμολόγιο Πώλησης','1'=>'Τιμολόγιο Παροχής Υπηρεσιών','2'=>'Απόδειξη Λιανικής Πώλησης','3'=>'Απόδειξη Παροχής Υπηρεσιών','4'=>'Πιστωτικό Τιμολόγιο')), 1,'', 1, 1, '', '1', '', '');
-                $result5=$extrafields->update('mydata_type', "Είδος παραστατικού ΑΑΔΕ", 'select',  '', 'facture',   0, 0, 202, array('options'=>array('0'=>'Τιμολόγιο Πώλησης','1'=>'Τιμολόγιο Παροχής Υπηρεσιών','2'=>'Απόδειξη Λιανικής Πώλησης','3'=>'Απόδειξη Παροχής Υπηρεσιών','4'=>'Πιστωτικό Τιμολόγιο')), 1,'', 1, "Select Invoice Type", '', '', '', '');
+		$result4=$extrafields->addExtraField('mydata_type', "Είδος παραστατικού ΑΑΔΕ", 'select',  202, '', 'facture',   0, 0, '', array('options'=>array('0'=>'Τιμολόγιο Πώλησης','1'=>'Τιμολόγιο Παροχής Υπηρεσιών','2'=>'Απόδειξη Λιανικής Πώλησης','3'=>'Απόδειξη Παροχής Υπηρεσιών','4'=>'Πιστωτικό Τιμολόγιο','5'=>'Πιστωτικό Λιανικής')), 1,'', 1, 1, '', '1', '', '');
+                $result5=$extrafields->update('mydata_type', "Είδος παραστατικού ΑΑΔΕ", 'select',  '', 'facture',   0, 0, 202, array('options'=>array('0'=>'Τιμολόγιο Πώλησης','1'=>'Τιμολόγιο Παροχής Υπηρεσιών','2'=>'Απόδειξη Λιανικής Πώλησης','3'=>'Απόδειξη Παροχής Υπηρεσιών','4'=>'Πιστωτικό Τιμολόγιο','5'=>'Πιστωτικό Λιανικής')), 1,'', 1, "Select Invoice Type", '', '', '', '');
 		//$result5=$extrafields->addExtraField('mydata_myattr5', "New Attr 5 label", 'text',    1, 10, 'user',         0, 0, '', '', 1, '', 0, 0, '', '', 'mydata@mydata', '$conf->mydata->enabled');
 
 		// Permissions

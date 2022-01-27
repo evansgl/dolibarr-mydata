@@ -1,12 +1,22 @@
 # CHANGELOG MYDATA FOR [DOLIBARR ERP CRM](https://www.dolibarr.org)
 
-# 1.6
+# 1.7
+Feature: Support negative values in invoices
+<br>
+Feature: Support πιστωτικές αποδείξεις.
+<br>
+Feature: Auto select payment methods based on dolibarr invoices
+<br>
+Multiple changes in displaying data based on user feedback
+<br>
+
+## 1.6
 Bug: Fix extravalue types from previous module installations. THere was a bug that adae_check button was not available.
 <br>
 Feature: Support (Πιστωτικά τιμολόγια). Προς το παρόν υποστηρίζει πιστωτικά τιμολόγια για εμπορεύματα.
 <br>
 
-# 1.5
+## 1.5
 Bug: Fixes a bug in invoice numbering
 <br>
 Bug: Remove html parse on description. Trunkate to 250 chars

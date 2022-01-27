@@ -34,7 +34,7 @@ define("CLASSIFICATION_TYPE_EU", $conf->global->MYDATA_CLASSIFICATION_TYPE_EU); 
 define("CLASSIFICATION_TYPE_3RD", $conf->global->MYDATA_CLASSIFICATION_TYPE_3RD); // Classification Type Category for 3rd Countries
 
 //8.12 Τρόποι Πληρωμής
-define("PAYMENT_METHOD", $conf->global->MYDATA_PAYMENT_METHOD);  // Payment method
+//define("PAYMENT_METHOD", $conf->global->MYDATA_PAYMENT_METHOD);  // Payment method
 
 // Production or Development API
 define("MYDATA_DEV", $conf->global->MYDATA_DEV);  // Payment method

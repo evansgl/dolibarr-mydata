@@ -69,7 +69,7 @@ $body.='
 </invoiceHeader>
 <paymentMethods>
 <paymentMethodDetails>
-<type>'.PAYMENT_METHOD.'</type>
+<type>'.$payment_type.'</type>
 <amount>'.$total.'</amount>
 </paymentMethodDetails>
 </paymentMethods>
@@ -104,10 +104,10 @@ if (MYDATA_SUPPORT_MULTILINE == true){
 	{
 		$subprod_rang = preg_replace('/\D/', '', $sub_row["rang"]);
                 $subprod_desc = substr(html($sub_row["description"]),0,254);
-		$subprod_net = number_format($sub_row["subprod_net"],2,'.','');
+		$subprod_net = abs(number_format($sub_row["subprod_net"],2,'.',''));
 		$subprod_tax_percent = $sub_row["subprod_tax_percent"];
-		$subprod_tax = number_format($sub_row["subprod_tax"],2,'.','');
-		$subprod_gross= number_format($sub_row["subprod_gross"],2,'.','');
+		$subprod_tax = abs(number_format($sub_row["subprod_tax"],2,'.',''));
+		$subprod_gross= abs(number_format($sub_row["subprod_gross"],2,'.',''));
 
 		// Subproduct VAT Percentage categorization
 		if ($subprod_tax_percent == 24) { $sub_vat_categ = 1;}
