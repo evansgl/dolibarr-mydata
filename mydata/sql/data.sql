@@ -3,6 +3,8 @@ INSERT INTO llx_c_paiement (code, libelle, type) VALUES ('2', 'Επαγ. Λογ�
 INSERT INTO llx_c_paiement (code, libelle, type) VALUES ('3', 'Μετρητά', '2');
 INSERT INTO llx_c_paiement (code, libelle, type) VALUES ('4', 'Επιταγή', '2');
 INSERT INTO llx_c_paiement (code, libelle, type) VALUES ('5', 'Επί Πιστώσει', '2');
+INSERT INTO llx_c_paiement (code, libelle, type) VALUES ('6', 'Web Banking', 2);
+INSERT INTO llx_c_paiement (code, libelle, type) VALUES ('7', 'POS / e-POS', 2);
 
 INSERT INTO llx_facture_extrafields (fk_object) select llx_facture.rowid from llx_facture left join llx_facture_extrafields on llx_facture_extrafields.fk_object = llx_facture.rowid where COALESCE(fk_object,0) = 0;
 
