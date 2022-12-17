@@ -365,7 +365,7 @@ print '<br>';
 
 		print "<br>";
                 echo "<br>";
-		print '<a href="https://www.aade.gr/sites/default/files/2021-09/myDATA%20API%20Documentation_ERP_v1.0.3_official.pdf">Πατήστε εδώ για το PDF myDATA Ηλεκτρονικά Βιβλία ΑΑΔΕ</a>';
+		print '<a href="https://www.aade.gr/sites/default/files/2022-09/myDATA%20API%20Documentation%20v1.0.6_official_erp.pdf">Πατήστε εδώ για το PDF myDATA Ηλεκτρονικά Βιβλία ΑΑΔΕ</a>';
 		print '<br>';
 
 		print '<table class="noborder centpercent">';
