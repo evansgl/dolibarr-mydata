@@ -27,8 +27,8 @@ require_once(__DIR__ . '/config.php');
 require_once DOL_DOCUMENT_ROOT.'/conf/conf.php';
 
 if (MYDATA_DEV == 1) {
-	$aade_api = "https://mydata-dev.azure-api.net/SendInvoices";
-} else $aade_api = "https://mydatapi.aade.gr/myDATA/SendInvoices";
+	$aade_api = "https://mydataapidev.aade.gr/SendInvoices";
+}
 
 
 function html($string) {
