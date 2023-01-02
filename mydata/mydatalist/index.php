@@ -28,8 +28,7 @@ require_once DOL_DOCUMENT_ROOT.'/conf/conf.php';
 
 if (MYDATA_DEV == 1) {
 	$aade_api = "https://mydataapidev.aade.gr/SendInvoices";
-}
-
+} else $aade_api = "https://mydatapi.aade.gr/myDATA/SendInvoices";
 
 function html($string) {
 	return htmlspecialchars($string, REPLACE_FLAGS, CHARSET);
