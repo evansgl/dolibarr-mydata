@@ -23,6 +23,7 @@ define("INV_TYPE_EU", $conf->global->MYDATA_INV_TYPE_EU);  // Invoice Type EU
 define("INV_TYPE_3RD", $conf->global->MYDATA_INV_TYPE_3RD); // Invoice Type 3RD COUNTRIES
 
 //8.3 Κατηγορία Αιτίας Εξαίρεσης ΦΠΑ
+define("VAT_EXEMP_CATEG_GR",  $conf->global->MYDATA_VAT_EXEMP_CATEG_GR);  // Invoice Type GR Countries (excluding Greece)
 define("VAT_EXEMP_CATEG_EU",  $conf->global->MYDATA_VAT_EXEMP_CATEG_EU);  // Invoice Type EU Countries (excluding Greece)
 define("VAT_EXEMP_CATEG_3RD", $conf->global->MYDATA_VAT_EXEMP_CATEG_3RD); // Invoice Type 3rd Countries
 
