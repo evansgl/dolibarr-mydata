@@ -83,7 +83,8 @@ $arrayofparameters = array(
 		//'MYDATA_INV_TYPE_GR'=>array('type'=>'string', 'css'=>'minwidth300' ,'enabled'=>1),
 		//'MYDATA_INV_TYPE_EU'=>array('type'=>'string', 'css'=>'minwidth300' ,'enabled'=>1),
 		//'MYDATA_INV_TYPE_3RD'=>array('type'=>'string', 'css'=>'minwidth300' ,'enabled'=>1),
-
+	
+		'MYDATA_VAT_EXEMP_CATEG_GR'=>array('type'=>'string', 'css'=>'minwidth300' ,'enabled'=>1),
 		'MYDATA_VAT_EXEMP_CATEG_EU'=>array('type'=>'string', 'css'=>'minwidth300' ,'enabled'=>1),
 		'MYDATA_VAT_EXEMP_CATEG_3RD'=>array('type'=>'string', 'css'=>'minwidth300' ,'enabled'=>1),
 
