@@ -191,7 +191,7 @@ while ($row = $result->fetch_assoc())
 			$invtype = "2.1"; //Timolog Ypiresias GR
 			$classificationCategory = "category1_3";
 			$classificationType = CLASSIFICATION_TYPE_GR;
-			$vatExemptionCategory = "";
+			$vatExemptionCategory = "<vatExemptionCategory>".VAT_EXEMP_CATEG_GR."</vatExemptionCategory>";
 			$counterpart_name = "";
 			$exchangeRate="";
 		}
@@ -240,7 +240,7 @@ while ($row = $result->fetch_assoc())
 			$invtype = "5.2";  //Pistotiko Timologio GR
 			$classificationCategory = "category1_1";
 			$classificationType = CLASSIFICATION_TYPE_GR;
-			$vatExemptionCategory = "";
+			$vatExemptionCategory = "<vatExemptionCategory>".VAT_EXEMP_CATEG_GR."</vatExemptionCategory>";
 			$counterpart_name = "";
 			$exchangeRate="";
 		}
@@ -282,7 +282,7 @@ while ($row = $result->fetch_assoc())
 			$invtype = "1.1"; //Timolog Polisis GR
 			$classificationType = CLASSIFICATION_TYPE_GR;
 			$classificationCategory = "category1_1";
-			$vatExemptionCategory = "";
+			$vatExemptionCategory = "<vatExemptionCategory>".VAT_EXEMP_CATEG_GR."</vatExemptionCategory>";
 			$counterpart_name = "";
 			$exchangeRate="";
 		}
