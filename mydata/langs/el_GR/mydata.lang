@@ -51,6 +51,8 @@ MYDATA_INV_TYPE_EUTooltip =
 MYDATA_INV_TYPE_3RD = Είδος παραστατικού (Τρίτες χώρες)
 MYDATA_INV_TYPE_3RDTooltip  Αντικριζόμενα Παραστατικά για πώληση σε Τρίτες χώρες (Σελ 42) <br> 1.3 Τιμολόγιο Πώλησης / Παραδόσεις Τρίτων Χωρών <br> 2.3 Τιμολόγιο Παροχής / Παροχή Υπηρεσιών σε λήπτη Τρίτης Χώρας
 
+MYDATA_VAT_EXEMP_CATEG_GR = Κατηγορία Αιτίας Εξαίρεσης ΦΠΑ (Ελλάδα)
+MYDATA_VAT_EXEMP_CATEG_GRTooltip Εξαίρεση ΦΠΑ σε Ελλάδα (Σελ 46)
 MYDATA_VAT_EXEMP_CATEG_EU = Κατηγορία Αιτίας Εξαίρεσης ΦΠΑ (Ευρωπαική Ένωση)
 MYDATA_VAT_EXEMP_CATEG_EUTooltip Εξαίρεση ΦΠΑ σε Ευρωπαική Ένωση (Σελ 46)
 MYDATA_VAT_EXEMP_CATEG_3RD = Κατηγορία Αιτίας Εξαίρεσης ΦΠΑ (Τρίτες χώρες)
