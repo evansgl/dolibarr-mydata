@@ -42,24 +42,24 @@ MYDATA_AADE_KEY = AADE Key
 MYDATA_AADE_KEYTooltip Το κλειδί του λογαριασμού της AADE
 
 MYDATA_INV_TYPE_GR = Είδος παραστατικού (Ελλάδα)
-MYDATA_INV_TYPE_GRTooltip Αντικριζόμενα Παραστατικά για πώληση σε Ελλάδα (Σελ 42) <br> 1.1 Τιμολόγιο Πώλησης <br> 2.1 Τιμολόγιο Παροχής <br> 
+MYDATA_INV_TYPE_GRTooltip Αντικριζόμενα Παραστατικά για πώληση σε Ελλάδα <br> 1.1 Τιμολόγιο Πώλησης <br> 2.1 Τιμολόγιο Παροχής <br> 
 
  
 MYDATA_INV_TYPE_EU = Είδος παραστατικού (Ευρωπαική Ένωση)
 MYDATA_INV_TYPE_EUTooltip =
 
 MYDATA_INV_TYPE_3RD = Είδος παραστατικού (Τρίτες χώρες)
-MYDATA_INV_TYPE_3RDTooltip  Αντικριζόμενα Παραστατικά για πώληση σε Τρίτες χώρες (Σελ 42) <br> 1.3 Τιμολόγιο Πώλησης / Παραδόσεις Τρίτων Χωρών <br> 2.3 Τιμολόγιο Παροχής / Παροχή Υπηρεσιών σε λήπτη Τρίτης Χώρας
+MYDATA_INV_TYPE_3RDTooltip  Αντικριζόμενα Παραστατικά για πώληση σε Τρίτες χώρες <br> 1.3 Τιμολόγιο Πώλησης / Παραδόσεις Τρίτων Χωρών <br> 2.3 Τιμολόγιο Παροχής / Παροχή Υπηρεσιών σε λήπτη Τρίτης Χώρας
 
 MYDATA_VAT_EXEMP_CATEG_GR = Κατηγορία Αιτίας Εξαίρεσης ΦΠΑ (Ελλάδα)
-MYDATA_VAT_EXEMP_CATEG_GRTooltip Εξαίρεση ΦΠΑ σε Ελλάδα (Σελ 46)
+MYDATA_VAT_EXEMP_CATEG_GRTooltip Εξαίρεση ΦΠΑ σε Ελλάδα (κενό αν δεν υπάρχει εξαίρεση)
 MYDATA_VAT_EXEMP_CATEG_EU = Κατηγορία Αιτίας Εξαίρεσης ΦΠΑ (Ευρωπαική Ένωση)
-MYDATA_VAT_EXEMP_CATEG_EUTooltip Εξαίρεση ΦΠΑ σε Ευρωπαική Ένωση (Σελ 46)
+MYDATA_VAT_EXEMP_CATEG_EUTooltip Εξαίρεση ΦΠΑ σε Ευρωπαική Ένωση
 MYDATA_VAT_EXEMP_CATEG_3RD = Κατηγορία Αιτίας Εξαίρεσης ΦΠΑ (Τρίτες χώρες)
-MYDATA_VAT_EXEMP_CATEG_3RDTooltip =  Κατηγορία Αιτίας Εξαίρεσης ΦΠΑ σε Τρίτες χώρες (Σελ 46)
+MYDATA_VAT_EXEMP_CATEG_3RDTooltip =  Κατηγορία Αιτίας Εξαίρεσης ΦΠΑ σε Τρίτες χώρες
 
 MYDATA_CLASSIFICATION_CATEGORY = Κωδικός Κατηγορίας Χαρακτηρισμού Εσόδων
-MYDATA_CLASSIFICATION_CATEGORYTooltip = Κωδικός Κατηγορίας Χαρακτηρισμού Εσόδων (Σελ 48)
+MYDATA_CLASSIFICATION_CATEGORYTooltip = Κωδικός Κατηγορίας Χαρακτηρισμού Εσόδων
 
 MYDATA_CLASSIFICATION_TYPE_GR =  Κωδικός Τύπου Χαρακτηρισμού Εσόδων για Τιμολόγια (Ελλάδα)
 MYDATA_CLASSIFICATION_TYPE_EU =  Κωδικός Τύπου Χαρακτηρισμού Εσόδων για Τιμολογια (Ευρωπαική Ένωση)
