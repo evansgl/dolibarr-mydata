@@ -191,7 +191,8 @@ while ($row = $result->fetch_assoc())
 			$invtype = "2.1"; //Timolog Ypiresias GR
 			$classificationCategory = "category1_3";
 			$classificationType = CLASSIFICATION_TYPE_GR;
-			$vatExemptionCategory = "<vatExemptionCategory>".VAT_EXEMP_CATEG_GR."</vatExemptionCategory>";
+			if  ($vat_percent == 0) { $vat_categ = 7; $vatExemptionCategory = "<vatExemptionCategory>".VAT_EXEMP_CATEG_GR."</vatExemptionCategory>"; }
+			else $vatExemptionCategory = "";
 			$counterpart_name = "";
 			$exchangeRate="";
 		}
@@ -240,7 +241,8 @@ while ($row = $result->fetch_assoc())
 			$invtype = "5.2";  //Pistotiko Timologio GR
 			$classificationCategory = "category1_1";
 			$classificationType = CLASSIFICATION_TYPE_GR;
-			$vatExemptionCategory = "<vatExemptionCategory>".VAT_EXEMP_CATEG_GR."</vatExemptionCategory>";
+			if  ($vat_percent == 0) { $vat_categ = 7; $vatExemptionCategory = "<vatExemptionCategory>".VAT_EXEMP_CATEG_GR."</vatExemptionCategory>"; }
+			else $vatExemptionCategory = "";
 			$counterpart_name = "";
 			$exchangeRate="";
 		}
@@ -282,7 +284,8 @@ while ($row = $result->fetch_assoc())
 			$invtype = "1.1"; //Timolog Polisis GR
 			$classificationType = CLASSIFICATION_TYPE_GR;
 			$classificationCategory = "category1_1";
-			$vatExemptionCategory = "<vatExemptionCategory>".VAT_EXEMP_CATEG_GR."</vatExemptionCategory>";
+			if  ($vat_percent == 0) { $vat_categ = 7; $vatExemptionCategory = "<vatExemptionCategory>".VAT_EXEMP_CATEG_GR."</vatExemptionCategory>"; }
+			else $vatExemptionCategory = "";
 			$counterpart_name = "";
 			$exchangeRate="";
 		}
