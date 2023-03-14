@@ -110,12 +110,12 @@ if (MYDATA_SUPPORT_MULTILINE == true){
 		$subprod_gross= abs(number_format($sub_row["subprod_gross"],2,'.',''));
 
 		// Subproduct VAT Percentage categorization
-		if ($subprod_tax_percent == 24) { $sub_vat_categ = 1;}
-		elseif ($subprod_tax_percent == 13) { $sub_vat_categ = 2;}
-		elseif ($subprod_tax_percent == 6) { $sub_vat_categ = 3;}
-		elseif ($subprod_tax_percent == 17) { $sub_vat_categ = 4;}
-		elseif ($subprod_tax_percent == 9) { $sub_vat_categ = 5;}
-		elseif ($subprod_tax_percent == 4) { $sub_vat_categ = 6;}
+		if ($subprod_tax_percent == 24) { $sub_vat_categ = 1; $vatExemptionCategory = "";}
+		elseif ($subprod_tax_percent == 13) { $sub_vat_categ = 2; $vatExemptionCategory = "";}
+		elseif ($subprod_tax_percent == 6) { $sub_vat_categ = 3; $vatExemptionCategory = "";}
+		elseif ($subprod_tax_percent == 17) { $sub_vat_categ = 4; $vatExemptionCategory = "";}
+		elseif ($subprod_tax_percent == 9) { $sub_vat_categ = 5; $vatExemptionCategory = "";}
+		elseif ($subprod_tax_percent == 4) { $sub_vat_categ = 6; $vatExemptionCategory = "";}
 		elseif  ($subprod_tax_percent == 0) { $sub_vat_categ = 7;}
 		else {$sub_vat_categ = 7;}
 
