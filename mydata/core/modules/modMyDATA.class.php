@@ -28,6 +28,7 @@
  */
 include_once DOL_DOCUMENT_ROOT.'/core/modules/DolibarrModules.class.php';
 
+require_once(DOL_DOCUMENT_ROOT.'/custom/mydata/mydatalist/config.php');
 /**
  *  Description and activation class for module MyDATA
  */
@@ -424,15 +425,26 @@ class modMyDATA extends DolibarrModules
 		// Update operation is required to fix previous module versions that were inserted a wrong type
 
 		$result1=$extrafields->addExtraField('mydata_check', "MyDATA Sent", 'boolean', 200,  '', 'facture',      0, 0, '', '', 1, '', 1, "If is checked means it was sent succesfully", '', '', '', '');
-		$result2=$extrafields->update('mydata_check', "MyDATA Sent", 'boolean',  '', 'facture',   0, 0, 200, '', 1,'', 1, 'If is checked means it was sent succesfully', '', '', '', '');
-		$result3=$extrafields->addExtraField('mydata_reply', "MyDATA Reply", 'varchar', 201,  255, 'facture',   0, 0, '', '', 1, '', 1, "AADE MARK code and date sent", '', '', '', '');
+        $result2=$extrafields->update('mydata_check', "MyDATA Sent", 'boolean',  '', 'facture',   0, 0, 200, '', 1,'', 1, 'If is checked means it was sent succesfully', '', '', '', '');
+
+
+        $result3=$extrafields->addExtraField('mydata_reply', "MyDATA Reply", 'varchar', 201,  255, 'facture',   0, 0, '', '', 1, '', 1, "AADE MARK code and date sent", '', '', '', '');
 		//$result2=$extrafields->addExtraField('mydata_myattr2', "New Attr 2 label", 'varchar', 1, 10, 'project',      0, 0, '', '', 1, '', 0, 0, '', '', 'mydata@mydata', '$conf->mydata->enabled');
 		//$result3=$extrafields->addExtraField('mydata_myattr3', "New Attr 3 label", 'varchar', 1, 10, 'bank_account', 0, 0, '', '', 1, '', 0, 0, '', '', 'mydata@mydata', '$conf->mydata->enabled');
 		$result4=$extrafields->addExtraField('mydata_type', "Είδος παραστατικού ΑΑΔΕ", 'select',  202, '', 'facture',   0, 0, '', array('options'=>array('0'=>'Τιμολόγιο Πώλησης','1'=>'Τιμολόγιο Παροχής Υπηρεσιών','2'=>'Απόδειξη Λιανικής Πώλησης','3'=>'Απόδειξη Παροχής Υπηρεσιών','4'=>'Πιστωτικό Τιμολόγιο','5'=>'Πιστωτικό Λιανικής')), 1,'', 1, 1, '', '1', '', '');
-		$result5=$extrafields->update('mydata_type', "Είδος παραστατικού ΑΑΔΕ", 'select',  '', 'facture',   0, 0, 202, array('options'=>array('0'=>'Τιμολόγιο Πώλησης','1'=>'Τιμολόγιο Παροχής Υπηρεσιών','2'=>'Απόδειξη Λιανικής Πώλησης','3'=>'Απόδειξη Παροχής Υπηρεσιών','4'=>'Πιστωτικό Τιμολόγιο','5'=>'Πιστωτικό Λιανικής')), 1,'', 1, "Select Invoice Type", '', '', '', '');
+        $result5=$extrafields->update('mydata_type', "Είδος παραστατικού ΑΑΔΕ", 'select',  '', 'facture',   0, 0, 202, array('options'=>array('0'=>'Τιμολόγιο Πώλησης','1'=>'Τιμολόγιο Παροχής Υπηρεσιών','2'=>'Απόδειξη Λιανικής Πώλησης','3'=>'Απόδειξη Παροχής Υπηρεσιών','4'=>'Πιστωτικό Τιμολόγιο','5'=>'Πιστωτικό Λιανικής')), 1,'', 1, "Select Invoice Type", '', '', '', '');
 		//$result5=$extrafields->addExtraField('mydata_myattr5', "New Attr 5 label", 'text',    1, 10, 'user',         0, 0, '', '', 1, '', 0, 0, '', '', 'mydata@mydata', '$conf->mydata->enabled');
 		
-		
+
+		if(MYDATA_TAXWH == 1) {
+
+			$result6=$extrafields->addExtraField('mydata_taxwh', "mydataTaxWHAmount", 'price', 203,  '', 'facture', 0, 0, '', '', 1, '', 1, "Ποσό παρακράτηση φόρου", '', '', '', '', 1);
+
+			$result7=$extrafields->addExtraField('mydata_taxwh_category', "mydataTaxWhCat", 'select',  204, '', 'facture',   0, 0, '', array('options'=>array('1'=>'Περιπτ. β’- Τόκοι - 15%','2'=>'Περιπτ. γ’ - Δικαιώματα - 20%','3'=>'Περιπτ. δ’ - Αμοιβές Συμβουλών Διοίκησης - 20%','4'=>'Περιπτ. δ’ - Τεχνικά Έργα - 3%','5'=>'Υγρά καύσιμα και προϊόντα καπνοβιομηχανίας - 1%','6'=>'Λοιπά Αγαθά - 4%','7'=>'Παροχή Υπηρεσιών - 8%','8'=>'Προκαταβλητέος Φόρος Αρχιτεκτόνων και Μηχανικών επί Συμβατικών Αμοιβών για Εκπόνηση Μελετών και Σχεδίων - 4%','9'=>'Προκαταβλητέος Φόρος Αρχιτεκτόνων και Μηχανικών επί Συμβατικών Αμοιβών που αφορούν οποιασδήποτε άλλης φύσης έργα - 10%','10'=>'Προκαταβλητέος Φόρος στις Αμοιβές Δικηγόρων - 15%','11'=>'Παρακράτηση Φόρου Μισθωτών Υπηρεσιών παρ. 1 αρ. 15 ν. 4172/2013 - ποσό','12'=>'Παρακράτηση Φόρου Μισθωτών Υπηρεσιών παρ. 2 αρ. 15 ν. 4172/2013 - Αξιωματικών Εμπορικού Ναυτικού - 15%','13'=>'Παρακράτηση Φόρου Μισθωτών Υπηρεσιών παρ. 2 αρ. 15 ν. 4172/2013 - Κατώτερο Πλήρωμα Εμπορικού Ναυτικού - 10%','14'=>'Παρακράτηση Ειδικής Εισφοράς Αλληλεγγύης - ποσό','15'=>'Παρακράτηση Φόρου Αποζημίωσης λόγω Διακοπής Σχέσης Εργασίας παρ.3 αρ. 15 ν. 4172/2013 - ποσό')), 1,'', '-1', "Επιλέξτε κατηγορία παρακράτησης", '', '','','');
+
+		}
+
+	
 		// Permissions
 		$this->remove($options);
 
