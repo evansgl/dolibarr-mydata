@@ -1,0 +1,105 @@
+# Copyright (C) 2021 Evangelos Souglakos
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+#
+# Generic
+#
+
+# Module label 'ModuleMyDATAName'
+ModuleMyDATAName = MyDATA
+# Module description 'ModuleMyDATADesc'
+ModuleMyDATADesc = Push invoices to AADE MyDATA Service
+
+#
+# Admin page
+#
+MyDATASetup = MyDATA setup
+Settings = Settings
+MyDATASetupPage = MyDATA Configuration
+
+MYDATA_DEV = Αποστολή μόνο στο δοκιμαστικό περιβάλλον myDATA
+MYDATA_DEVTooltip = Αποστολή μόνο στο δοκιμάστικό (development) περιβάλλον του MyDATA
+
+MYDATA_AFM = Εταιρικό ΑΦΜ 
+MYDATA_AFMTooltip = Μόνο τον αριθμό του εταιρικού σας ΑΦΜ
+
+MYDATA_AADE_USER = AADE User
+MYDATA_AADE_USERTooltip = Το όνομα χρήστη του λογαριασμού της AADE
+
+MYDATA_AADE_KEY = AADE Key
+MYDATA_AADE_KEYTooltip Το κλειδί του λογαριασμού της AADE
+
+MYDATA_INV_TYPE_GR = Είδος παραστατικού (Ελλάδα)
+MYDATA_INV_TYPE_GRTooltip Αντικριζόμενα Παραστατικά για πώληση σε Ελλάδα <br> 1.1 Τιμολόγιο Πώλησης <br> 2.1 Τιμολόγιο Παροχής <br> 
+
+ 
+MYDATA_INV_TYPE_EU = Είδος παραστατικού (Ευρωπαική Ένωση)
+MYDATA_INV_TYPE_EUTooltip =
+
+MYDATA_INV_TYPE_3RD = Είδος παραστατικού (Τρίτες χώρες)
+MYDATA_INV_TYPE_3RDTooltip  Αντικριζόμενα Παραστατικά για πώληση σε Τρίτες χώρες <br> 1.3 Τιμολόγιο Πώλησης / Παραδόσεις Τρίτων Χωρών <br> 2.3 Τιμολόγιο Παροχής / Παροχή Υπηρεσιών σε λήπτη Τρίτης Χώρας
+
+MYDATA_VAT_EXEMP_CATEG_GR = Κατηγορία Αιτίας Εξαίρεσης ΦΠΑ (Ελλάδα)
+MYDATA_VAT_EXEMP_CATEG_GRTooltip Εξαίρεση ΦΠΑ σε Ελλάδα (κενό αν δεν υπάρχει εξαίρεση)
+MYDATA_VAT_EXEMP_CATEG_EU = Κατηγορία Αιτίας Εξαίρεσης ΦΠΑ (Ευρωπαική Ένωση)
+MYDATA_VAT_EXEMP_CATEG_EUTooltip Εξαίρεση ΦΠΑ σε Ευρωπαική Ένωση
+MYDATA_VAT_EXEMP_CATEG_3RD = Κατηγορία Αιτίας Εξαίρεσης ΦΠΑ (Τρίτες χώρες)
+MYDATA_VAT_EXEMP_CATEG_3RDTooltip =  Κατηγορία Αιτίας Εξαίρεσης ΦΠΑ σε Τρίτες χώρες
+
+MYDATA_CLASSIFICATION_CATEGORY = Κωδικός Κατηγορίας Χαρακτηρισμού Εσόδων
+MYDATA_CLASSIFICATION_CATEGORYTooltip = Κωδικός Κατηγορίας Χαρακτηρισμού Εσόδων
+
+MYDATA_CLASSIFICATION_TYPE_GR =  Κωδικός Τύπου Χαρακτηρισμού Εσόδων για Τιμολόγια (Ελλάδα)
+MYDATA_CLASSIFICATION_TYPE_EU =  Κωδικός Τύπου Χαρακτηρισμού Εσόδων για Τιμολογια (Ευρωπαική Ένωση)
+MYDATA_CLASSIFICATION_TYPE_3RD =  Κωδικός Τύπου Χαρακτηρισμού Εσόδων για Τιμολογια (Τρίτες Χώρες)
+MYDATA_PAYMENT_METHOD = Τρόπος Πληρωμής
+
+MYDATA_SEARCH_BYDATE = Αναζήτηση με ημερομηνία
+MYDATA_SEARCH_BYDATETooltip = Ενεργοποιήστε αυτη την επιλογή για να εμφανιστούν όλα τα παραστατικά που εκδόθηκαν από την παρακάτω ημερομηνία έως τώρα και δεν έχουν αποσταλεί στην ΑΑΔΕ. <br> Εάν αυτή η επιλογή είναι απενεργοποιημένη, θα εμφανίζονται μόνο τα παραστατικά που είναι ανοιχτα (μη πληρωμένα) και δεν έχουν αποσταλεί στην AADE.
+
+MYDATA_FROM_DATE =Αρχική Ημερομηνία Αναζήτησης
+MYDATA_FROM_DATETooltip = Εισάγετε ημερομηνία της μορφής YYYY-MM-DD π.χ 2021-01-01
+
+MYDATA_INVOICE_NAME = Όνομα Παραστατικού
+MYDATA_INVOICE_NAMETooltip = Εάν ή επιλογή αυτή είναι ενεργοποιημένη τότε τα τιμολόγια θα πρέπει να έχουν την ονομασία NAME-SERIAL-NUMBER π.χ INV-2021-232 <br> Εάν δεν είναι ενεργοποιημένη τότε το όνομα των τιμολογιών θα πρέπει να είναι της μορφής SERIAL-NUMBER π.χ FA354-234
+
+MYDATA_COUNTRY_DEFAULT = Παραστατικά χωρίς δηλωμένη χώρα
+MYDATA_COUNTRY_DEFAULTTooltip = Εάν ή επιλογή αυτή είναι ενεργοποιημένη τότε για τα παραστατικά που δεν έχει καταχωρηθεί χώρα , θα επιλέγεται η Ελλάδα.
+
+MYDATA_SUPPORT_MULTILINE = Υποστήριξη παραστατικών με πολλαπλό ΦΠΑ
+MYDATA_SUPPORT_MULTILINETooltip = Εάν ή επιλογή αυτή είναι ενεργοποιημένη τότε θα αποστέλλονται στην ΑΑΔΕ, αναλυτικά όλές οι γραμμές του παραστατικού με το κάθε ΦΠΑ. Στην αντίθετη περίπτωση αποστέλεται το παραστατικό χωρίς ανάλυση των γραμμών.
+
+INVOICE_APODIXI_NUM = Αρίθμηση απόδειξης ΝΝΝΝΝΝ
+INVOICE_APODIXI_NUMTooltip = Αν οι λιανικές αποδείξεις σας έχουν αρίθμηση αύξων αριθμού NNNNNN.. (όπου Ν νούμερο) ενεργοποιήστε αυτή την επιλογή.
+
+MYDATA_TAXWH = Παρακράτηση φόρου
+MYDATA_TAXWHTooltip = Ενεργοποιήστε την παρακράτηση φόρου στα τιμολόγια. Θα δημιουργηθούν δύο extra fields τιμολόγια. Το ένα αφορά το ποσό της παρακράτησης και το άλλο την κατηγορία της παρακράτησης. Εάν έχουμε συμπληρώσει ποσό στην παρακράτηση τότε θα αποσταλλούν στην ΑΑΔΕ το ποσό και ή κατηγορία εάν δεν έχουμε συμπληρώσει τίποτα στο ποσό ή αυτό είναι μηδέν τότε το τιμολόγιο αποστέλέται χωρίς παρακρατηση. 
+#
+# About page
+#
+About = About
+MyDATAAbout = About MyDATA
+MyDATAAboutPage = MyDATA about page
+
+#
+# Sample page
+#
+MyPageName = My page name
+
+#
+# Sample widget
+#
+MyWidget = My widget
+MyWidgetDescription = My widget description
