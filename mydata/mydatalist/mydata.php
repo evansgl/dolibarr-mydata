@@ -102,6 +102,7 @@ if (MYDATA_SUPPORT_MULTILINE == true){
 	while ($sub_row = $result_subprod->fetch_assoc())
 
 	{
+
 		$subprod_rang = preg_replace('/\D/', '', $sub_row["rang"]);
                 $subprod_desc = substr(html($sub_row["description"]),0,254);
 		$subprod_net = abs(number_format($sub_row["subprod_net"],2,'.',''));
@@ -130,10 +131,10 @@ if (MYDATA_SUPPORT_MULTILINE == true){
 				<netValue>'.$subprod_net.'</netValue>
 				<vatCategory>'.$sub_vat_categ.'</vatCategory>
 
-
 				<vatAmount>'.$subprod_tax.'</vatAmount>
 				'.$vatExemptionCategory.'
-                                <lineComments>'.$subprod_desc.'</lineComments>
+                <lineComments>'.$subprod_desc.'</lineComments>
+
 				<incomeClassification>
 				<N1:classificationType>'.$classificationType.'</N1:classificationType>
 				<N1:classificationCategory>'.$classificationCategory.'</N1:classificationCategory>
@@ -156,8 +157,9 @@ if (MYDATA_SUPPORT_MULTILINE == true){
 		<vatCategory>'.$vat_categ.'</vatCategory>
 		<vatAmount>'.$tax.'</vatAmount>
 
-		'.$vatExemptionCategory.'
-
+		'.$vatExemptionCategory;
+	
+    $body.='       
 		<incomeClassification>
 		<N1:classificationType>'.$classificationType.'</N1:classificationType>
 		<N1:classificationCategory>'.$classificationCategory.'</N1:classificationCategory>
@@ -165,12 +167,27 @@ if (MYDATA_SUPPORT_MULTILINE == true){
 		</incomeClassification>
 		</invoiceDetails>
 		';
+
+	//Add tax withheld data to invoice xml for invoices that has total vat and taxes. Setting multiple vat is off
+	if ($taxwh != 0 ) {
+		$body.=' 	
+			<taxesTotals>
+			<taxes>
+			<taxType>1</taxType>
+			<taxCategory>'.$taxwh_cat.'</taxCategory>
+			<underlyingValue>'.$net.'</underlyingValue>
+			<taxAmount>'.$taxwh.'</taxAmount>
+			</taxes>
+			</taxesTotals>
+			';
+	}
 }
+
 $body.='
 <invoiceSummary>
 <totalNetValue>'.$net.'</totalNetValue>
 <totalVatAmount>'.$tax.'</totalVatAmount>
-<totalWithheldAmount>0.00</totalWithheldAmount>
+<totalWithheldAmount>'.$taxwh.'</totalWithheldAmount>
 <totalFeesAmount>0.00</totalFeesAmount>
 <totalStampDutyAmount>0.00</totalStampDutyAmount>
 <totalOtherTaxesAmount>0.00</totalOtherTaxesAmount>
@@ -205,7 +222,7 @@ try
 		if ($xmlreply->response[0]->statusCode == "Success") 
 		{
 			$mydata = $datetime ." [". $xmlreply->response[0]->invoiceMark ."]" ;
-			$mydata_check = 1;	
+			$mydata_check = 1;
 			$update_query = "UPDATE ".$dolibarr_main_db_prefix."facture left join ".$dolibarr_main_db_prefix."facture_extrafields on ".$dolibarr_main_db_prefix."facture_extrafields.fk_object = ".$dolibarr_main_db_prefix."facture.rowid set mydata_reply ='$mydata', mydata_check='1' where ".$dolibarr_main_db_prefix."facture.rowid=" . $rowid;
 			$update_result = mysqli_query($con, $update_query);
 

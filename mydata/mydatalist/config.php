@@ -43,3 +43,5 @@ define("MYDATA_DEV", $conf->global->MYDATA_DEV);  // Payment method
 define("MYDATA_COUNTRY_DEFAULT", $conf->global->MYDATA_COUNTRY_DEFAULT);  // Default Country
 define("MYDATA_SUPPORT_MULTILINE", $conf->global->MYDATA_SUPPORT_MULTILINE);  // Support Multiline Invoice
 
+//Tax withheld enable or disable
+define("MYDATA_TAXWH", $conf->global->MYDATA_TAXWH);

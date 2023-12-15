@@ -105,7 +105,7 @@ $arrayofparameters = array(
 		'INVOICE_APODIXI_NUM'=>array('type'=>'yesno', 'enabled'=>1),
                 'MYDATA_SUPPORT_MULTILINE'=>array('type'=>'yesno', 'enabled'=>1),
                 'MYDATA_COUNTRY_DEFAULT'=>array('type'=>'yesno', 'enabled'=>1),
-		//'MYDATA_MYPARAM6'=>array('type'=>'DropdownBox', 'enabled'=>1),
+		'MYDATA_TAXWH'=>array('type'=>'yesno', 'enabled'=>1),
 		//'MYDATA_MYPARAM5'=>array('type'=>'thirdparty_type', 'enabled'=>1),
 		//'MYDATA_MYPARAM6'=>array('type'=>'securekey', 'enabled'=>1),
 		//'MYDATA_MYPARAM7'=>array('type'=>'product', 'enabled'=>1),
