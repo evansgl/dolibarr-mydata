@@ -30,6 +30,7 @@ if (MYDATA_DEV == 1) {
 	$aade_api = "https://mydataapidev.aade.gr/SendInvoices";
 } else $aade_api = "https://mydatapi.aade.gr/myDATA/SendInvoices";
 
+
 function html($string) {
 	return htmlspecialchars($string, REPLACE_FLAGS, CHARSET);
 }
@@ -54,9 +55,19 @@ $con->set_charset("utf8mb4");
 
 $from_date = MYDATA_FROM_DATE ;
 
-$query_open_inv = "select COALESCE(".$dolibarr_main_db_prefix."c_paiement.code,5) as payment_type,COALESCE(mydata_type,0) as mydata_type,round((multicurrency_total_tva * 100) / multicurrency_total_ht,0) as vat_percent,".$dolibarr_main_db_prefix."facture.rowid,ref,mydata_reply,mydata_check,datef,nom,".$dolibarr_main_db_prefix."c_country.code,address,town,zip,tva_intra,total_ttc,".$dolibarr_main_db_prefix."facture.multicurrency_code,multicurrency_tx,multicurrency_total_ht,multicurrency_total_ttc,multicurrency_total_tva from ".$dolibarr_main_db_prefix."facture left join ".$dolibarr_main_db_prefix."societe on ".$dolibarr_main_db_prefix."societe.rowid = ".$dolibarr_main_db_prefix."facture.fk_soc left join ".$dolibarr_main_db_prefix."c_country on ".$dolibarr_main_db_prefix."c_country.rowid = ".$dolibarr_main_db_prefix."societe.fk_pays left join ".$dolibarr_main_db_prefix."facture_extrafields on ".$dolibarr_main_db_prefix."facture_extrafields.fk_object = ".$dolibarr_main_db_prefix."facture.rowid LEFT JOIN ".$dolibarr_main_db_prefix."c_paiement on ".$dolibarr_main_db_prefix."c_paiement.id = ".$dolibarr_main_db_prefix."facture.fk_mode_reglement where fk_statut in (1,2,3,4,5) AND COALESCE(mydata_check,0) = 0 ORDER BY ref DESC";
+if(MYDATA_TAXWH == 1) {
 
-$query_from_date = "select COALESCE(".$dolibarr_main_db_prefix."c_paiement.code,5) as payment_type,COALESCE(mydata_type,0) as mydata_type,round((multicurrency_total_tva * 100) / multicurrency_total_ht,0) as vat_percent,".$dolibarr_main_db_prefix."facture.rowid,ref,mydata_reply,mydata_check,datef,nom,".$dolibarr_main_db_prefix."c_country.code,address,town,zip,tva_intra,total_ttc,".$dolibarr_main_db_prefix."facture.multicurrency_code,multicurrency_tx,multicurrency_total_ht,multicurrency_total_ttc,multicurrency_total_tva from ".$dolibarr_main_db_prefix."facture left join ".$dolibarr_main_db_prefix."societe on ".$dolibarr_main_db_prefix."societe.rowid = ".$dolibarr_main_db_prefix."facture.fk_soc left join ".$dolibarr_main_db_prefix."c_country on ".$dolibarr_main_db_prefix."c_country.rowid = ".$dolibarr_main_db_prefix."societe.fk_pays left join ".$dolibarr_main_db_prefix."facture_extrafields on ".$dolibarr_main_db_prefix."facture_extrafields.fk_object = ".$dolibarr_main_db_prefix."facture.rowid LEFT JOIN ".$dolibarr_main_db_prefix."c_paiement on ".$dolibarr_main_db_prefix."c_paiement.id = ".$dolibarr_main_db_prefix."facture.fk_mode_reglement where fk_statut in (1,2,3,4,5) AND DATE(datef) >= '".$from_date."' AND COALESCE(mydata_check,0) = 0 ORDER BY ref DESC";
+	$query_open_inv = "select COALESCE(".$dolibarr_main_db_prefix."c_paiement.code,5) as payment_type,COALESCE(mydata_type,0) as mydata_type,round((multicurrency_total_tva * 100) / multicurrency_total_ht,0) as vat_percent,".$dolibarr_main_db_prefix."facture.rowid,ref,mydata_reply,mydata_check,mydata_taxwh,mydata_taxwh_category,datef,nom,".$dolibarr_main_db_prefix."c_country.code,address,town,zip,tva_intra,total_ttc,".$dolibarr_main_db_prefix."facture.multicurrency_code,multicurrency_tx,multicurrency_total_ht,multicurrency_total_ttc,multicurrency_total_tva from ".$dolibarr_main_db_prefix."facture left join ".$dolibarr_main_db_prefix."societe on ".$dolibarr_main_db_prefix."societe.rowid = ".$dolibarr_main_db_prefix."facture.fk_soc left join ".$dolibarr_main_db_prefix."c_country on ".$dolibarr_main_db_prefix."c_country.rowid = ".$dolibarr_main_db_prefix."societe.fk_pays left join ".$dolibarr_main_db_prefix."facture_extrafields on ".$dolibarr_main_db_prefix."facture_extrafields.fk_object = ".$dolibarr_main_db_prefix."facture.rowid LEFT JOIN ".$dolibarr_main_db_prefix."c_paiement on ".$dolibarr_main_db_prefix."c_paiement.id = ".$dolibarr_main_db_prefix."facture.fk_mode_reglement where fk_statut in (1,2,3,4,5) AND COALESCE(mydata_check,0) = 0 ORDER BY ref DESC";
+
+	$query_from_date = "select COALESCE(".$dolibarr_main_db_prefix."c_paiement.code,5) as payment_type,COALESCE(mydata_type,0) as mydata_type,round((multicurrency_total_tva * 100) / multicurrency_total_ht,0) as vat_percent,".$dolibarr_main_db_prefix."facture.rowid,ref,mydata_reply,mydata_check,mydata_taxwh,mydata_taxwh_category,datef,nom,".$dolibarr_main_db_prefix."c_country.code,address,town,zip,tva_intra,total_ttc,".$dolibarr_main_db_prefix."facture.multicurrency_code,multicurrency_tx,multicurrency_total_ht,multicurrency_total_ttc,multicurrency_total_tva from ".$dolibarr_main_db_prefix."facture left join ".$dolibarr_main_db_prefix."societe on ".$dolibarr_main_db_prefix."societe.rowid = ".$dolibarr_main_db_prefix."facture.fk_soc left join ".$dolibarr_main_db_prefix."c_country on ".$dolibarr_main_db_prefix."c_country.rowid = ".$dolibarr_main_db_prefix."societe.fk_pays left join ".$dolibarr_main_db_prefix."facture_extrafields on ".$dolibarr_main_db_prefix."facture_extrafields.fk_object = ".$dolibarr_main_db_prefix."facture.rowid LEFT JOIN ".$dolibarr_main_db_prefix."c_paiement on ".$dolibarr_main_db_prefix."c_paiement.id = ".$dolibarr_main_db_prefix."facture.fk_mode_reglement where fk_statut in (1,2,3,4,5) AND DATE(datef) >= '".$from_date."' AND COALESCE(mydata_check,0) = 0 ORDER BY ref DESC";
+
+} else {
+
+	$query_open_inv = "select COALESCE(".$dolibarr_main_db_prefix."c_paiement.code,5) as payment_type,COALESCE(mydata_type,0) as mydata_type,round((multicurrency_total_tva * 100) / multicurrency_total_ht,0) as vat_percent,".$dolibarr_main_db_prefix."facture.rowid,ref,mydata_reply,mydata_check,datef,nom,".$dolibarr_main_db_prefix."c_country.code,address,town,zip,tva_intra,total_ttc,".$dolibarr_main_db_prefix."facture.multicurrency_code,multicurrency_tx,multicurrency_total_ht,multicurrency_total_ttc,multicurrency_total_tva from ".$dolibarr_main_db_prefix."facture left join ".$dolibarr_main_db_prefix."societe on ".$dolibarr_main_db_prefix."societe.rowid = ".$dolibarr_main_db_prefix."facture.fk_soc left join ".$dolibarr_main_db_prefix."c_country on ".$dolibarr_main_db_prefix."c_country.rowid = ".$dolibarr_main_db_prefix."societe.fk_pays left join ".$dolibarr_main_db_prefix."facture_extrafields on ".$dolibarr_main_db_prefix."facture_extrafields.fk_object = ".$dolibarr_main_db_prefix."facture.rowid LEFT JOIN ".$dolibarr_main_db_prefix."c_paiement on ".$dolibarr_main_db_prefix."c_paiement.id = ".$dolibarr_main_db_prefix."facture.fk_mode_reglement where fk_statut in (1,2,3,4,5) AND COALESCE(mydata_check,0) = 0 ORDER BY ref DESC";
+
+	$query_from_date = "select COALESCE(".$dolibarr_main_db_prefix."c_paiement.code,5) as payment_type,COALESCE(mydata_type,0) as mydata_type,round((multicurrency_total_tva * 100) / multicurrency_total_ht,0) as vat_percent,".$dolibarr_main_db_prefix."facture.rowid,ref,mydata_reply,mydata_check,datef,nom,".$dolibarr_main_db_prefix."c_country.code,address,town,zip,tva_intra,total_ttc,".$dolibarr_main_db_prefix."facture.multicurrency_code,multicurrency_tx,multicurrency_total_ht,multicurrency_total_ttc,multicurrency_total_tva from ".$dolibarr_main_db_prefix."facture left join ".$dolibarr_main_db_prefix."societe on ".$dolibarr_main_db_prefix."societe.rowid = ".$dolibarr_main_db_prefix."facture.fk_soc left join ".$dolibarr_main_db_prefix."c_country on ".$dolibarr_main_db_prefix."c_country.rowid = ".$dolibarr_main_db_prefix."societe.fk_pays left join ".$dolibarr_main_db_prefix."facture_extrafields on ".$dolibarr_main_db_prefix."facture_extrafields.fk_object = ".$dolibarr_main_db_prefix."facture.rowid LEFT JOIN ".$dolibarr_main_db_prefix."c_paiement on ".$dolibarr_main_db_prefix."c_paiement.id = ".$dolibarr_main_db_prefix."facture.fk_mode_reglement where fk_statut in (1,2,3,4,5) AND DATE(datef) >= '".$from_date."' AND COALESCE(mydata_check,0) = 0 ORDER BY ref DESC";
+}
+ 
 
 //echo $query_open_inv;
 
@@ -131,6 +142,8 @@ if(!empty($_GET))
 <th>MyData Απεσταλμένο</th>
 <th>Καθαρή Αξία</th>
 <th>Φόρος</th>
+<th><center>TaxWH Amnt</center></th>
+<th><center>TaxWH Cat</center></th>
 <th>ΦΠΑ %</th>
 <th>Σύνολο</th>
 <th>Ισοτιμία Συναλλάγματος</th>
@@ -168,9 +181,21 @@ while ($row = $result->fetch_assoc())
 	$forex = abs(number_format($row["multicurrency_tx"],2,'.',''));
 	$forex_total = abs(number_format($row["multicurrency_total_ttc"],2,'.',''));
 	$tax = abs(number_format($row["multicurrency_total_tva"],2,'.','')); //Fixed after dkalivis reported bug
-	$payment_type =  $row["payment_type"];
+
+	if(MYDATA_TAXWH == 1) {
+		$taxwh = number_format($row["mydata_taxwh"],2,'.','');
+		$taxwh_cat = number_format($row["mydata_taxwh_category"]);
+	} else {
+		$taxwh = number_format(0,2,'.','');
+		$taxwh_cat = "0";
+	}
+	
+    $payment_type =  $row["payment_type"];
 
 	$mydata_type =  $row["mydata_type"];
+
+    $total = number_format($total-$taxwh,2,'.','');
+	$forex_total = number_format($forex_total-$taxwh,2,'.','');
 
 	$eu_countries = array("AT","BE","BG","CY","CZ","DE","DK","EE","ES","FI","FR","HU","HR","IE","IT","LT","LU","LV","MT","NL","PL","PT","RO","SE","SI","SK");
 	$local_country = array("GR");
@@ -181,7 +206,8 @@ while ($row = $result->fetch_assoc())
 
 	}
 
-	//Set ClassificationType
+	      
+    //Set ClassificationType
 
 	//Timologio Paroxis Ipiresion
 	if ($mydata_type == 1){
@@ -436,6 +462,14 @@ while ($row = $result->fetch_assoc())
 	echo "<td>";
 	echo number_format($tax, 2, ',', '.');
 	echo "</td>";
+
+    echo '<td style="text-align:center;">';
+    echo $taxwh;
+    echo '</td>'; 
+	
+    echo '<td style="text-align:center;">';
+    echo $taxwh_cat;
+    echo '</td>'; 	
 
 	echo "<td>";
 	echo $vat_percent;
