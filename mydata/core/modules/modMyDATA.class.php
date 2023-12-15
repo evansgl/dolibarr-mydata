@@ -431,13 +431,7 @@ class modMyDATA extends DolibarrModules
 		$result4=$extrafields->addExtraField('mydata_type', "Είδος παραστατικού ΑΑΔΕ", 'select',  202, '', 'facture',   0, 0, '', array('options'=>array('0'=>'Τιμολόγιο Πώλησης','1'=>'Τιμολόγιο Παροχής Υπηρεσιών','2'=>'Απόδειξη Λιανικής Πώλησης','3'=>'Απόδειξη Παροχής Υπηρεσιών','4'=>'Πιστωτικό Τιμολόγιο','5'=>'Πιστωτικό Λιανικής')), 1,'', 1, 1, '', '1', '', '');
 		$result5=$extrafields->update('mydata_type', "Είδος παραστατικού ΑΑΔΕ", 'select',  '', 'facture',   0, 0, 202, array('options'=>array('0'=>'Τιμολόγιο Πώλησης','1'=>'Τιμολόγιο Παροχής Υπηρεσιών','2'=>'Απόδειξη Λιανικής Πώλησης','3'=>'Απόδειξη Παροχής Υπηρεσιών','4'=>'Πιστωτικό Τιμολόγιο','5'=>'Πιστωτικό Λιανικής')), 1,'', 1, "Select Invoice Type", '', '', '', '');
 		//$result5=$extrafields->addExtraField('mydata_myattr5', "New Attr 5 label", 'text',    1, 10, 'user',         0, 0, '', '', 1, '', 0, 0, '', '', 'mydata@mydata', '$conf->mydata->enabled');
-		$result6=$extrafields->addExtraField('mydata_check', "MyDATA Sent", 'boolean', 200,  '', 'facture_rec',      0, 0, '', '', 1, '', 1, "If is checked means it was sent succesfully", '', '', '', '');
-        $result7=$extrafields->update('mydata_check', "MyDATA Sent", 'boolean',  '', 'facture_rec',   0, 0, 200, '', 1,'', 1, 'If is checked means it was sent succesfully', '', '', '', '');
-        $result8=$extrafields->addExtraField('mydata_reply', "MyDATA Reply", 'varchar', 201,  255, 'facture_rec',   0, 0, '', '', 1, '', 1, "AADE MARK code and date sent", '', '', '', '');
-		$result9=$extrafields->addExtraField('mydata_type', "Είδος παραστατικού ΑΑΔΕ", 'select',  202, '', 'facture_rec',   0, 0, '', array('options'=>array('0'=>'Τιμολόγιο Πώλησης','1'=>'Τιμολόγιο Παροχής Υπηρεσιών','2'=>'Απόδειξη Λιανικής Πώλησης','3'=>'Απόδειξη Παροχής Υπηρεσιών','4'=>'Πιστωτικό Τιμολόγιο','5'=>'Πιστωτικό Λιανικής')), 1,'', 1, 1, '', '1', '', '');
-        $result10=$extrafields->update('mydata_type', "Είδος παραστατικού ΑΑΔΕ", 'select',  '', 'facture_rec',   0, 0, 202, array('options'=>array('0'=>'Τιμολόγιο Πώλησης','1'=>'Τιμολόγιο Παροχής Υπηρεσιών','2'=>'Απόδειξη Λιανικής Πώλησης','3'=>'Απόδειξη Παροχής Υπηρεσιών','4'=>'Πιστωτικό Τιμολόγιο','5'=>'Πιστωτικό Λιανικής')), 1,'', 1, "Select Invoice Type", '', '', '', '');
-
-
+		
 		
 		// Permissions
 		$this->remove($options);
