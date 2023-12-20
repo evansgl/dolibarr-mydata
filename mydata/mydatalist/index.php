@@ -194,8 +194,10 @@ while ($row = $result->fetch_assoc())
 
 	$mydata_type =  $row["mydata_type"];
 
-    $total = number_format($total-$taxwh,2,'.','');
-	$forex_total = number_format($forex_total-$taxwh,2,'.','');
+    //$total = number_format($total-$taxwh,2,'.','');                //παρακράτηση μη πολλαπλών Φ.Π.Α.
+	$total = number_format($total,2,'.','');                         //παρακράτηση πολλαπλών Φ.Π.Α.
+	//$forex_total = number_format($forex_total-$taxwh,2,'.','');    //παρακράτηση μη πολλαπλών Φ.Π.Α.
+	$forex_total = number_format($forex_total,2,'.','');             //παρακράτηση πολλαπλών Φ.Π.Α.
 
 	$eu_countries = array("AT","BE","BG","CY","CZ","DE","DK","EE","ES","FI","FR","HU","HR","IE","IT","LT","LU","LV","MT","NL","PL","PT","RO","SE","SI","SK");
 	$local_country = array("GR");
