@@ -92,8 +92,7 @@ if (MYDATA_SUPPORT_MULTILINE == true){
 
 // Calculate Subproducts
 
-$query_subprod = "select rang,description,round(".$dolibarr_main_db_prefix."facturedet.total_ht,2) as subprod_net,round(tva_tx) as subprod_tax_percent,round(".$dolibarr_main_db_prefix."facturedet.total_tva,2) as subprod_tax,round(".$dolibarr_main_db_prefix."facturedet.total_ttc,2) subprod_gross  from ".$dolibarr_main_db_prefix."facture left join ".$dolibarr_main_db_prefix."facturedet on ".$dolibarr_main_db_prefix."facturedet.fk_facture = ".$dolibarr_main_db_prefix."facture.rowid where ".$dolibarr_main_db_prefix."facture.rowid =  '".$rowid."' order by rang asc";
-
+$query_subprod = "select rang,description,round(".$dolibarr_main_db_prefix."facturedet.total_ht,2) as subprod_net,round(tva_tx) as subprod_tax_percent,round(".$dolibarr_main_db_prefix."facturedet.total_tva,2) as subprod_tax,round(".$dolibarr_main_db_prefix."facturedet.total_ttc,2) as subprod_gross from ".$dolibarr_main_db_prefix."facture left join ".$dolibarr_main_db_prefix."facturedet on ".$dolibarr_main_db_prefix."facturedet.fk_facture = ".$dolibarr_main_db_prefix."facture.rowid where ".$dolibarr_main_db_prefix."facture.rowid = '".$rowid."' order by rang asc";
 
 if (MYDATA_SUPPORT_MULTILINE == true){
 
