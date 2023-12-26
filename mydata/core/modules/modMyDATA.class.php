@@ -430,7 +430,7 @@ class modMyDATA extends DolibarrModules
 		$result4=$extrafields->update('mydata_reply', "MyDATA Reply", 'varchar', 201,  255, 'facture',   0, 0, '', '', 1, '', 1, "AADE MARK code and date sent", '', '',  1, '');
 		$result5=$extrafields->addExtraField('mydata_type', "Είδος παραστατικού ΑΑΔΕ", 'select',  202, '', 'facture',   0, 0, '', array('options'=>array('0'=>'Τιμολόγιο Πώλησης','1'=>'Τιμολόγιο Παροχής Υπηρεσιών','2'=>'Απόδειξη Λιανικής Πώλησης','3'=>'Απόδειξη Παροχής Υπηρεσιών','4'=>'Πιστωτικό Τιμολόγιο','5'=>'Πιστωτικό Λιανικής')), 1,'', 1, 1, '', '1', '', '');
         $result6=$extrafields->update('mydata_type', "Είδος παραστατικού ΑΑΔΕ", 'select',  '', 'facture',   0, 0, 202, array('options'=>array('0'=>'Τιμολόγιο Πώλησης','1'=>'Τιμολόγιο Παροχής Υπηρεσιών','2'=>'Απόδειξη Λιανικής Πώλησης','3'=>'Απόδειξη Παροχής Υπηρεσιών','4'=>'Πιστωτικό Τιμολόγιο','5'=>'Πιστωτικό Λιανικής')), 1,'', 1, "Select Invoice Type", '', '', '', '');
-		$result7=$extrafields->addExtraField('mydata_reply_QR', "MyDATA QR Reply", 'varchar', 203,  255, 'facture',   0, 0, '', '', 1, '', 1, "AADE QR Recieved", '', '', 1, '');
+		$result7=$extrafields->addExtraField('mydata_reply_QR', "MyDATA QR Reply", 'varchar', 203,  255, 'facture',   0, 0, '', '', 1, '', 1, "AADE QR Received", '', '', 1, '');
 		$result8=$extrafields->addExtraField('mydata_reply_invoiceUid', "MyDATA invoiceUid Reply", 'varchar', 204,  255, 'facture',   0, 0, '', '', 1, '', 1, "AADE invoiceUid Recieved", '', '', 1, '');
 		if(MYDATA_TAXWH == 1) {
 			$result9=$extrafields->addExtraField('mydata_taxwh', "mydataTaxWHAmount", 'price', 203,  '', 'facture', 0, 0, '', '', 1, '', 1, "Ποσό παρακράτησης φόρου", '', '', '', '', 1);
@@ -444,7 +444,7 @@ class modMyDATA extends DolibarrModules
 		$resultrec4=$extrafields->update('mydata_reply', "MyDATA Reply", 'varchar', 201,  255, 'facture_rec',   0, 0, '', '', 1, '', 1, "AADE MARK code and date sent", '', '',  1, '');
 		$resultrec5=$extrafields->addExtraField('mydata_type', "Είδος παραστατικού ΑΑΔΕ", 'select',  202, '', 'facture_rec',   0, 0, '', array('options'=>array('0'=>'Τιμολόγιο Πώλησης','1'=>'Τιμολόγιο Παροχής Υπηρεσιών','2'=>'Απόδειξη Λιανικής Πώλησης','3'=>'Απόδειξη Παροχής Υπηρεσιών','4'=>'Πιστωτικό Τιμολόγιο','5'=>'Πιστωτικό Λιανικής')), 1,'', 1, 1, '', '1', '', '');
         $resultrec6=$extrafields->update('mydata_type', "Είδος παραστατικού ΑΑΔΕ", 'select',  '', 'facture_rec',   0, 0, 202, array('options'=>array('0'=>'Τιμολόγιο Πώλησης','1'=>'Τιμολόγιο Παροχής Υπηρεσιών','2'=>'Απόδειξη Λιανικής Πώλησης','3'=>'Απόδειξη Παροχής Υπηρεσιών','4'=>'Πιστωτικό Τιμολόγιο','5'=>'Πιστωτικό Λιανικής')), 1,'', 1, "Select Invoice Type", '', '', '', '');
-		$resultrec7=$extrafields->addExtraField('mydata_reply_QR', "MyDATA QR Reply", 'varchar', 203,  255, 'facture_rec',   0, 0, '', '', 1, '', 1, "AADE QR Recieved", '', '', 1, '');
+		$resultrec7=$extrafields->addExtraField('mydata_reply_QR', "MyDATA QR Reply", 'varchar', 203,  255, 'facture_rec',   0, 0, '', '', 1, '', 1, "AADE QR Received", '', '', 1, '');
 		$resultrec8=$extrafields->addExtraField('mydata_reply_invoiceUid', "MyDATA invoiceUid Reply", 'varchar', 204,  255, 'facture_rec',   0, 0, '', '', 1, '', 1, "AADE invoiceUid Recieved", '', '', 1, '');
 		if(MYDATA_TAXWH == 1) {
 			$resultrec9=$extrafields->addExtraField('mydata_taxwh', "mydataTaxWHAmount", 'price', 203,  '', 'facture_rec', 0, 0, '', '', 1, '', 1, "Ποσό παρακράτησης φόρου", '', '', '', '', 1);
