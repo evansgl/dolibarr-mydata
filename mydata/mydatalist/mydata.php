@@ -214,7 +214,7 @@ try
 	$xmlstr = $response->getBody();
 	//echo $xmlstr;
 	$xmlreply = new SimpleXMLElement($xmlstr);
-	$datetime = date("y/m/d H:i"); 
+	$datetime = date("Y/m/d H:i"); 
 
 	if (200 == $response->getStatus()) {
 
