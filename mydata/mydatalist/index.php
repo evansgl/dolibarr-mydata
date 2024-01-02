@@ -71,7 +71,8 @@ if(MYDATA_TAXWH == 1) {
 
 //echo $query_open_inv;
 
-if (MYDATA_SEARCH_BY == 1){
+if (MYDATA_SEARCH_BY == 1)
+{
 	$query = $query_from_date;
 } 
 else 
@@ -84,7 +85,7 @@ else
 $result = mysqli_query($con, $query) or trigger_error("Query Failed! SQL: $sql - Error: ".mysqli_error($con), E_USER_ERROR);
 
 // Test if there was a query error
-if ($result->connect_errno) {
+if ($con->connect_errno) {
 	printf("connection failed: %s\n", $con->connect_error());
 	exit();
 }

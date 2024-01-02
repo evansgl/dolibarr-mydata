@@ -33,9 +33,9 @@ xsi:schemaLocation="http://www.aade.gr/myDATA/invoice/v1.0 schema.xsd">
 
 <invoice>
 <issuer>
-<vatNumber>'.preg_replace('/\D/', '', VAT_NUMBER).'</vatNumber>
-<country>GR</country>
-<branch>0</branch>
+ <vatNumber>'.preg_replace('/\D/', '', VAT_NUMBER).'</vatNumber>
+ <country>GR</country>
+ <branch>0</branch>
 </issuer>
 ';
 

@@ -11,9 +11,11 @@ define("INVOICE_NAME",$conf->global->MYDATA_INVOICE_NAME );    	// SERIES-YEAR-N
 //define("INVOICE_NAME","2");  	// SERIES-NUMBER E.g FA231-123
 
 /* Search Criteria - ONLY ONE SELECTION!*/
+define ("MYDATA_SEARCH_BY", $conf->global->MYDATA_SEARCH_BYDATE);
 
-define ("MYDATA_SEARCH_BY", $conf->global->MYDATA_SEARCH_BYDATE);	
+if (isset($conf->global->MYDATA_FROM_DATE))
 define ("MYDATA_FROM_DATE", $conf->global->MYDATA_FROM_DATE);
+else define ("MYDATA_FROM_DATE", null );
 
 //Invoice Types
 //8.8 Κωδικός Κατηγορίας Χαρακτηρισμού Εσόδων
@@ -23,7 +25,10 @@ define("INV_TYPE_EU", $conf->global->MYDATA_INV_TYPE_EU);  // Invoice Type EU
 define("INV_TYPE_3RD", $conf->global->MYDATA_INV_TYPE_3RD); // Invoice Type 3RD COUNTRIES
 
 //8.3 Κατηγορία Αιτίας Εξαίρεσης ΦΠΑ
+if (isset($conf->global->MYDATA_VAT_EXEMP_CATEG_GR))
 define("VAT_EXEMP_CATEG_GR",  $conf->global->MYDATA_VAT_EXEMP_CATEG_GR);  // Invoice Type GR 
+else define("VAT_EXEMP_CATEG_GR", null);
+
 define("VAT_EXEMP_CATEG_EU",  $conf->global->MYDATA_VAT_EXEMP_CATEG_EU);  // Invoice Type EU Countries (excluding Greece)
 define("VAT_EXEMP_CATEG_3RD", $conf->global->MYDATA_VAT_EXEMP_CATEG_3RD); // Invoice Type 3rd Countries
 
@@ -44,4 +49,11 @@ define("MYDATA_COUNTRY_DEFAULT", $conf->global->MYDATA_COUNTRY_DEFAULT);  // Def
 define("MYDATA_SUPPORT_MULTILINE", $conf->global->MYDATA_SUPPORT_MULTILINE);  // Support Multiline Invoice
 
 //Tax withheld enable or disable
+if (isset($conf->global->MYDATA_TAXWH))
 define("MYDATA_TAXWH", $conf->global->MYDATA_TAXWH);
+else define("MYDATA_TAXWH", null);
+
+if (isset($conf->global->INVOICE_APODIXI_NUM))
+define("INVOICE_APODIXI_NUM",$conf->global->INVOICE_APODIXI_NUM);
+else define("INVOICE_APODIXI_NUM", null);
+
