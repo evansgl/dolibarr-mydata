@@ -103,7 +103,7 @@ if (MYDATA_SUPPORT_MULTILINE == true){
 	{
 
 		$subprod_rang = preg_replace('/\D/', '', $sub_row["rang"]);
-		$subprod_desc = substr(html($sub_row["description"]),0,254);
+		$subprod_desc = strlen($sub_row["description"]) > 150 ? substr($sub_row["description"], 0, 146) . "..." : $sub_row["description"]; //MyData allows < 150 chars!
 		$subprod_net = abs(number_format($sub_row["subprod_net"],2,'.',''));
 		$subprod_tax_percent = $sub_row["subprod_tax_percent"];
 		$subprod_tax = abs(number_format($sub_row["subprod_tax"],2,'.',''));
@@ -132,8 +132,7 @@ if (MYDATA_SUPPORT_MULTILINE == true){
 
 				<vatAmount>'.$subprod_tax.'</vatAmount>
 				'.$vatExemptionCategory.'
-                <lineComments>'.$subprod_desc.'</lineComments>
-
+                		<lineComments>'.$subprod_desc.'</lineComments>
 				<incomeClassification>
 				<N1:classificationType>'.$classificationType.'</N1:classificationType>
 				<N1:classificationCategory>'.$classificationCategory.'</N1:classificationCategory>
@@ -223,7 +222,8 @@ try
 		{
 			$mydata = $datetime ." [". $xmlreply->response[0]->invoiceMark ."]" ;
 			$mydata_check = 1;
-			$mydata_QR = $xmlreply->response[0]->qrUrl;
+			//$mydata_QR = $xmlreply->response[0]->qrUrl;
+			$mydata_QR = '<a href="' . $xmlreply->response[0]->qrUrl . '" target="_blank">Επιβεβαίωση Παραστατικού</a>';
 			$mydata_invoiceUid = $xmlreply->response[0]->invoiceUid;
 			$update_query = "UPDATE ".$dolibarr_main_db_prefix."facture left join ".$dolibarr_main_db_prefix."facture_extrafields on ".$dolibarr_main_db_prefix."facture_extrafields.fk_object = ".$dolibarr_main_db_prefix."facture.rowid set mydata_reply ='$mydata', mydata_reply_QR ='$mydata_QR', mydata_reply_invoiceUid = '$mydata_invoiceUid', mydata_check='1' where ".$dolibarr_main_db_prefix."facture.rowid=" . $rowid;
 			$update_result = mysqli_query($con, $update_query);

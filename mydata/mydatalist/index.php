@@ -221,7 +221,7 @@ while ($row = $result->fetch_assoc())
 			$classificationType = CLASSIFICATION_TYPE_GR;
 			if  ($vat_percent == 0) { $vat_categ = 7; $vatExemptionCategory = "<vatExemptionCategory>".VAT_EXEMP_CATEG_GR."</vatExemptionCategory>"; }
 			else $vatExemptionCategory = "";
-			$counterpart_name = "";
+			$counterpart_name = ""; //Note that: Counterpart Name is forbidden for Counterpart from Greece
 			$exchangeRate="";
 		}
 		else if (in_array($country, $eu_countries, TRUE )){
