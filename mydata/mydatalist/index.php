@@ -142,8 +142,14 @@ if(!empty($_GET))
 <th>MyData Απεσταλμένο</th>
 <th>Καθαρή Αξία</th>
 <th>Φόρος</th>
-<th><center>TaxWH Amnt</center></th>
-<th><center>TaxWH Cat</center></th>
+
+<?php
+if(MYDATA_TAXWH == 1) {
+ echo "<th>Ποσό Παρακράτησης</th>";
+ echo "<th>Κατ. Παρακράτησης</th>";
+}
+?>
+
 <th>ΦΠΑ %</th>
 <th>Σύνολο</th>
 <th>Ισοτιμία Συναλλάγματος</th>
@@ -465,13 +471,15 @@ while ($row = $result->fetch_assoc())
 	echo number_format($tax, 2, ',', '.');
 	echo "</td>";
 
-    echo '<td style="text-align:center;">';
-    echo $taxwh;
-    echo '</td>'; 
+	if(MYDATA_TAXWH == 1) {
+    	echo '<td>';
+    	echo $taxwh;
+    	echo '</td>'; 
 	
-    echo '<td style="text-align:center;">';
-    echo $taxwh_cat;
-    echo '</td>'; 	
+    	echo '<td>';
+    	echo $taxwh_cat;
+    	echo '</td>'; 
+	}	
 
 	echo "<td>";
 	echo $vat_percent;
