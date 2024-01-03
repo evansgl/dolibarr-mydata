@@ -1,5 +1,19 @@
 # CHANGELOG MYDATA FOR [DOLIBARR ERP CRM](https://www.dolibarr.org)
 
+#1.8
+Feature: Print QR AADE Code into pdf 
+<br>
+Feature: Show AADE Link to verify invoice
+<br>
+Feature: Support Multiple VATs in lines
+<br>
+Feature: Support all invoice types
+<br>
+Bug: Handle large descriptions that are not allowed by AADE
+<br>
+Bug: Fix date and time to comply AADDE API
+<br>
+
 # 1.7
 Feature: Support negative values in invoices
 <br>

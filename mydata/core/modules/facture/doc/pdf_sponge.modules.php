@@ -1062,7 +1062,7 @@ class pdf_sponge extends ModelePDFFactures
 					$this->addBottomQRInvoice($pdf, $object, $outputlangs);
 				}
 
-			        if (getDolGlobalString('INVOICE_ADD_GREEK_QR_CODE') == '1') {
+			        if ($conf->global->MYDATA_QRCODE) {
                                  $extrafields = new ExtraFields($this->db);
                                  $extralabels=$extrafields->fetch_name_optionals_label($object->table_element);
                                  $object->fetch($rowid);

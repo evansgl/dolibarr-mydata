@@ -58,6 +58,9 @@ MYDATA_VAT_EXEMP_CATEG_EUTooltip Εξαίρεση ΦΠΑ σε Ευρωπαική
 MYDATA_VAT_EXEMP_CATEG_3RD = Κατηγορία Αιτίας Εξαίρεσης ΦΠΑ (Τρίτες χώρες)
 MYDATA_VAT_EXEMP_CATEG_3RDTooltip =  Κατηγορία Αιτίας Εξαίρεσης ΦΠΑ σε Τρίτες χώρες
 
+MYDATA_QRCODE = Εμφάνιση ΑΑΔΕ QR Code στο παραστατικό
+MYDATA_QRCODETooltip = Χρειαζεται να αντιγράψετε (και αντικαταστήσετε) το pdf template file  από το φάκελο: custom/mydata/core/modules/facture/doc/pdf_sponge.modules.php -> core/modules/facture/doc/pdf_sponge.modules.php
+
 MYDATA_CLASSIFICATION_CATEGORY = Κωδικός Κατηγορίας Χαρακτηρισμού Εσόδων
 MYDATA_CLASSIFICATION_CATEGORYTooltip = Κωδικός Κατηγορίας Χαρακτηρισμού Εσόδων
 
@@ -78,7 +81,7 @@ MYDATA_INVOICE_NAMETooltip = Εάν ή επιλογή αυτή είναι ενε
 MYDATA_COUNTRY_DEFAULT = Παραστατικά χωρίς δηλωμένη χώρα
 MYDATA_COUNTRY_DEFAULTTooltip = Εάν ή επιλογή αυτή είναι ενεργοποιημένη τότε για τα παραστατικά που δεν έχει καταχωρηθεί χώρα , θα επιλέγεται η Ελλάδα.
 
-MYDATA_SUPPORT_MULTILINE = Υποστήριξη παραστατικών με πολλαπλό ΦΠΑ
+MYDATA_SUPPORT_MULTILINE = Αναλυση γραμμών στο παραστατικό (πολλαπλό ΦΠΑ)
 MYDATA_SUPPORT_MULTILINETooltip = Εάν ή επιλογή αυτή είναι ενεργοποιημένη τότε θα αποστέλλονται στην ΑΑΔΕ, αναλυτικά όλές οι γραμμές του παραστατικού με το κάθε ΦΠΑ. Στην αντίθετη περίπτωση αποστέλεται το παραστατικό χωρίς ανάλυση των γραμμών.
 
 INVOICE_APODIXI_NUM = Αρίθμηση απόδειξης ΝΝΝΝΝΝ
