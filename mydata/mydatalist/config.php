@@ -20,9 +20,9 @@ else define ("MYDATA_FROM_DATE", null );
 //Invoice Types
 //8.8 Κωδικός Κατηγορίας Χαρακτηρισμού Εσόδων
 //8.1 Είδη παραστατικών – Σελ42
-define("INV_TYPE_GR", $conf->global->MYDATA_INV_TYPE_GR);  // Invoice Type GR
-define("INV_TYPE_EU", $conf->global->MYDATA_INV_TYPE_EU);  // Invoice Type EU
-define("INV_TYPE_3RD", $conf->global->MYDATA_INV_TYPE_3RD); // Invoice Type 3RD COUNTRIES
+//define("INV_TYPE_GR", $conf->global->MYDATA_INV_TYPE_GR);  // Invoice Type GR
+//define("INV_TYPE_EU", $conf->global->MYDATA_INV_TYPE_EU);  // Invoice Type EU
+//define("INV_TYPE_3RD", $conf->global->MYDATA_INV_TYPE_3RD); // Invoice Type 3RD COUNTRIES
 
 //8.3 Κατηγορία Αιτίας Εξαίρεσης ΦΠΑ
 if (isset($conf->global->MYDATA_VAT_EXEMP_CATEG_GR))
