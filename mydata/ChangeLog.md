@@ -1,6 +1,9 @@
 # CHANGELOG MYDATA FOR [DOLIBARR ERP CRM](https://www.dolibarr.org)
 
-#1.8
+#1.8.1
+Bug: Prevent crash of sponge module when aade url is not present.
+
+##1.8
 Feature: Print QR AADE Code into pdf 
 <br>
 Feature: Show AADE Link to verify invoice
@@ -14,7 +17,7 @@ Bug: Handle large descriptions that are not allowed by AADE
 Bug: Fix date and time to comply AADDE API
 <br>
 
-# 1.7
+## 1.7
 Feature: Support negative values in invoices
 <br>
 Feature: Support πιστωτικές αποδείξεις.

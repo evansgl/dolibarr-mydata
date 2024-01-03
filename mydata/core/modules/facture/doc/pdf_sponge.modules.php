@@ -1076,6 +1076,8 @@ class pdf_sponge extends ModelePDFFactures
 
 				$aade_invoiceUid = $object->array_options['options_mydata_reply_invoiceUid'] . " MARK " . $mark_result;
 				$doc = new DOMDocument();
+			
+				if (!empty(url) {	
 				$doc->loadHTML($url);
 				$aTags = $doc->getElementsByTagName('a');
 				$qrcodestring = $aTags->item(0)->getAttribute('href');				
@@ -1083,6 +1085,7 @@ class pdf_sponge extends ModelePDFFactures
                                 $pdf->write2DBarcode($qrcodestring, 'QRCODE,M', $this->marge_gauche, 245, 200, 25, $styleQr, 'N');
 				$pdf->SetXY(55,275);
                                 $pdf->writeHTMLCell(200, 10, '', '', $aade_invoiceUid, 0, 1);
+				}
                                }
                                  
 				$pdf->Close();
