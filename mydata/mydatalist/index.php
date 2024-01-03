@@ -35,7 +35,6 @@ function html($string) {
 	return htmlspecialchars($string, REPLACE_FLAGS, CHARSET);
 }
 
-
 /*
    function write_log($log_msg)
    {

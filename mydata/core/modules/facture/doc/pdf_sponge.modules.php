@@ -1077,7 +1077,7 @@ class pdf_sponge extends ModelePDFFactures
 				$aade_invoiceUid = $object->array_options['options_mydata_reply_invoiceUid'] . " MARK " . $mark_result;
 				$doc = new DOMDocument();
 			
-				if (!empty(url) {	
+				if (!empty($url)) {
 				$doc->loadHTML($url);
 				$aTags = $doc->getElementsByTagName('a');
 				$qrcodestring = $aTags->item(0)->getAttribute('href');				
