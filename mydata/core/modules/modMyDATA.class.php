@@ -73,7 +73,7 @@ class modMyDATA extends DolibarrModules
 		$this->editor_url = '';
 
 		// Possible values for version are: 'development', 'experimental', 'dolibarr', 'dolibarr_deprecated' or a version string like 'x.y.z'
-		$this->version = '1.7';
+		$this->version = '1.8';
 		// Url to the file with your last numberversion of this module
 		//$this->url_last_version = 'http://www.example.com/versionmodule.txt';
 
@@ -425,11 +425,11 @@ class modMyDATA extends DolibarrModules
 		// Update operation is required to fix previous module versions that were inserted a wrong type
 		//invoice
 		$result1=$extrafields->addExtraField('mydata_check', "MyDATA Sent", 'boolean', 200,  '', 'facture',      0, 0, '', '', 1, '', 1, "If is checked means it was sent succesfully", '', '', '', '');
-        $result2=$extrafields->update('mydata_check', "MyDATA Sent", 'boolean',  '', 'facture',   0, 0, 200, '', 1,'', 1, 'If is checked means it was sent succesfully', '', '', '', '');
-        $result3=$extrafields->addExtraField('mydata_reply', "MyDATA Reply", 'varchar', 201,  255, 'facture',   0, 0, '', '', 1, '', 5, "AADE MARK code and date sent", '', '', '', '');
+        	$result2=$extrafields->update('mydata_check', "MyDATA Sent", 'boolean',  '', 'facture',   0, 0, 200, '', 1,'', 1, 'If is checked means it was sent succesfully', '', '', '', '');
+        	$result3=$extrafields->addExtraField('mydata_reply', "MyDATA Reply", 'varchar', 201,  255, 'facture',   0, 0, '', '', 1, '', 5, "AADE MARK code and date sent", '', '', '', '');
 		$result4=$extrafields->update('mydata_reply', "MyDATA Reply", 'varchar', 255, 'facture',   0, 0, 201,  '', 1, '', 5, "AADE MARK code and date sent", '', '',  1, '');
 		$result5=$extrafields->addExtraField('mydata_type', "Είδος παραστατικού ΑΑΔΕ", 'select',  202, '', 'facture',   0, 0, '', array('options'=>array('0'=>'Τιμολόγιο Πώλησης','1'=>'Τιμολόγιο Παροχής Υπηρεσιών','2'=>'Απόδειξη Λιανικής Πώλησης','3'=>'Απόδειξη Παροχής Υπηρεσιών','4'=>'Πιστωτικό Τιμολόγιο','5'=>'Πιστωτικό Λιανικής')), 1,'', 1, 1, '', '1', '', '');
-        $result6=$extrafields->update('mydata_type', "Είδος παραστατικού ΑΑΔΕ", 'select',  '', 'facture',   0, 0, 202, array('options'=>array('0'=>'Τιμολόγιο Πώλησης','1'=>'Τιμολόγιο Παροχής Υπηρεσιών','2'=>'Απόδειξη Λιανικής Πώλησης','3'=>'Απόδειξη Παροχής Υπηρεσιών','4'=>'Πιστωτικό Τιμολόγιο','5'=>'Πιστωτικό Λιανικής')), 1,'', 1, "Select Invoice Type", '', '', '', '');
+        	$result6=$extrafields->update('mydata_type', "Είδος παραστατικού ΑΑΔΕ", 'select',  '', 'facture',   0, 0, 202, array('options'=>array('0'=>'Τιμολόγιο Πώλησης','1'=>'Τιμολόγιο Παροχής Υπηρεσιών','2'=>'Απόδειξη Λιανικής Πώλησης','3'=>'Απόδειξη Παροχής Υπηρεσιών','4'=>'Πιστωτικό Τιμολόγιο','5'=>'Πιστωτικό Λιανικής')), 1,'', 1, "Select Invoice Type", '', '', '', '');
 		$resultrec7=$extrafields->addExtraField('mydata_reply_QR', "MyDATA QR Reply", 'varchar', 203,  255, 'facture',   0, 0, '', '', 1, '', 5, "AADE QR Received", '', '', 1, '');
 		$resultrec8=$extrafields->update('mydata_reply_QR', "MyDATA QR Reply", 'varchar', 255, 'facture',   0, 0, 203, '', 1, '', 5, "AADE QR Received", '', '', 1, '');
 		$resultrec9=$extrafields->addExtraField('mydata_reply_invoiceUid', "MyDATA invoiceUid Reply", 'varchar', 204,  255, 'facture',   0, 0, '', '', 1, '', 5, "AADE invoiceUid Received", '', '', 1, '');
@@ -441,11 +441,11 @@ class modMyDATA extends DolibarrModules
 
 		//recurring invoice
 		$result1=$extrafields->addExtraField('mydata_check', "MyDATA Sent", 'boolean', 200,  '', 'facture_rec',      0, 0, '', '', 1, '', 1, "If is checked means it was sent succesfully", '', '', '', '');
-        $result2=$extrafields->update('mydata_check', "MyDATA Sent", 'boolean',  '', 'facture_rec',   0, 0, 200, '', 1,'', 1, 'If is checked means it was sent succesfully', '', '', '', '');
-        $result3=$extrafields->addExtraField('mydata_reply', "MyDATA Reply", 'varchar', 201,  255, 'facture_rec',   0, 0, '', '', 1, '', 5, "AADE MARK code and date sent", '', '', '', '');
+        	$result2=$extrafields->update('mydata_check', "MyDATA Sent", 'boolean',  '', 'facture_rec',   0, 0, 200, '', 1,'', 1, 'If is checked means it was sent succesfully', '', '', '', '');
+        	$result3=$extrafields->addExtraField('mydata_reply', "MyDATA Reply", 'varchar', 201,  255, 'facture_rec',   0, 0, '', '', 1, '', 5, "AADE MARK code and date sent", '', '', '', '');
 		$result4=$extrafields->update('mydata_reply', "MyDATA Reply", 'varchar', 255, 'facture_rec',   0, 0, 201,  '', 1, '', 5, "AADE MARK code and date sent", '', '',  1, '');
 		$result5=$extrafields->addExtraField('mydata_type', "Είδος παραστατικού ΑΑΔΕ", 'select',  202, '', 'facture_rec',   0, 0, '', array('options'=>array('0'=>'Τιμολόγιο Πώλησης','1'=>'Τιμολόγιο Παροχής Υπηρεσιών','2'=>'Απόδειξη Λιανικής Πώλησης','3'=>'Απόδειξη Παροχής Υπηρεσιών','4'=>'Πιστωτικό Τιμολόγιο','5'=>'Πιστωτικό Λιανικής')), 1,'', 1, 1, '', '1', '', '');
-        $result6=$extrafields->update('mydata_type', "Είδος παραστατικού ΑΑΔΕ", 'select',  '', 'facture_rec',   0, 0, 202, array('options'=>array('0'=>'Τιμολόγιο Πώλησης','1'=>'Τιμολόγιο Παροχής Υπηρεσιών','2'=>'Απόδειξη Λιανικής Πώλησης','3'=>'Απόδειξη Παροχής Υπηρεσιών','4'=>'Πιστωτικό Τιμολόγιο','5'=>'Πιστωτικό Λιανικής')), 1,'', 1, "Select Invoice Type", '', '', '', '');
+        	$result6=$extrafields->update('mydata_type', "Είδος παραστατικού ΑΑΔΕ", 'select',  '', 'facture_rec',   0, 0, 202, array('options'=>array('0'=>'Τιμολόγιο Πώλησης','1'=>'Τιμολόγιο Παροχής Υπηρεσιών','2'=>'Απόδειξη Λιανικής Πώλησης','3'=>'Απόδειξη Παροχής Υπηρεσιών','4'=>'Πιστωτικό Τιμολόγιο','5'=>'Πιστωτικό Λιανικής')), 1,'', 1, "Select Invoice Type", '', '', '', '');
 		$resultrec7=$extrafields->addExtraField('mydata_reply_QR', "MyDATA QR Reply", 'varchar', 203,  255, 'facture_rec',   0, 0, '', '', 1, '', 5, "AADE QR Received", '', '', 1, '');
 		$resultrec8=$extrafields->update('mydata_reply_QR', "MyDATA QR Reply", 'varchar', 255, 'facture_rec',   0, 0, 203, '', 1, '', 5, "AADE QR Received", '', '', 1, '');
 		$resultrec9=$extrafields->addExtraField('mydata_reply_invoiceUid', "MyDATA invoiceUid Reply", 'varchar', 204,  255, 'facture_rec',   0, 0, '', '', 1, '', 5, "AADE invoiceUid Received", '', '', 1, '');

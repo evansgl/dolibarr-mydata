@@ -38,15 +38,12 @@ require_once DOL_DOCUMENT_ROOT.'/product/class/product.class.php';
 require_once DOL_DOCUMENT_ROOT.'/core/lib/company.lib.php';
 require_once DOL_DOCUMENT_ROOT.'/core/lib/functions2.lib.php';
 require_once DOL_DOCUMENT_ROOT.'/core/lib/pdf.lib.php';
-//-------------->>>>>
-require_once DOL_DOCUMENT_ROOT.'/core/class/extrafields.class.php';
 
 
 /**
  *	Class to manage PDF invoice template sponge
  */
-//-------------->>>>>
-class pdf_arisem extends ModelePDFFactures
+class pdf_sponge extends ModelePDFFactures
 {
 	/**
 	 * @var DoliDb Database handler
@@ -176,8 +173,7 @@ class pdf_arisem extends ModelePDFFactures
 		$langs->loadLangs(array("main", "bills"));
 
 		$this->db = $db;
-		//-------------->>>>>
-		$this->name = "arisem";
+		$this->name = "sponge";
 		$this->description = $langs->trans('PDFSpongeDescription');
 		$this->update_main_doc_field = 1; // Save the name of generated file as the main doc when generating a doc with this template
 
@@ -253,15 +249,6 @@ class pdf_arisem extends ModelePDFFactures
 		if (!empty($conf->global->MAIN_USE_FPDF)) {
 			$outputlangs->charset_output = 'ISO-8859-1';
 		}
-
-		//-------------->>>>>
-		//https://wiki.dolibarr.org/index.php?title=Add_Extrafields_on_PDF_Models
-		$extrafields = new ExtraFields($this->db);
-		$extralabels=$extrafields->fetch_name_optionals_label($object->table_element);
-		$object->fetch($rowid);
-		$object->fetch_optionals($rowid,$extralabels);
-
-		//-------------->>>>>
 
 		// Load translation files required by the page
 		$outputlangs->loadLangs(array("main", "bills", "products", "dict", "companies"));
@@ -1065,72 +1052,6 @@ class pdf_arisem extends ModelePDFFactures
 					$posy = $this->drawPaymentsTable($pdf, $object, $posy, $outputlangs);
 				}
 
-
-				//-------------->>>>>			//Print "Ο Εκδότης"
-				//Add into table llx_document_model the new document template "arisem" that you have created. 
-				$t_Publisher="Ο Εκδότης";
-				$pdf->SetTextColor(0, 0, 0);
-				$pdf->SetFont('', '', $default_font_size);
-				$width = $pdf->GetStringWidth($t_Publisher);
-				$height = $pdf->getNumLines($t_Publisher, $width);
-				$border = 0;
-				$ln = 0;
-				$align = 'C';
-				$fill = FALSE;
-				$t_posx = $pdf->getPageWidth() / 2 - ($width / 2);
-				$t_posy =  4 * $pdf->getPageHeight() / 5;
-				$pdf->SetXY($t_posx, $t_posy);
-				$pdf->Cell($width, $height, $t_Publisher, $border, $ln, $align, $fill);
-				//$pdf->MultiCell(80, 0, $t_Publisher, 1, 'L', 1, 0, '', '', true, 0, false, true, 0);
-
-				//	Print AADE response
-				$pos_frst = strpos($object->array_options['options_mydata_reply'],'[');
-				$pos_scnd = strpos($object->array_options['options_mydata_reply'],']');
-				$aade_mark_number_first = "";
-				if  (($pos_frst !== false) && ($pos_scnd!==false)) {
-					// all mark
-					//$aade_mark_number_first =  substr($object->array_options['options_mydata_reply'], $pos_frst +1, $pos_scnd - $pos_frst-1) .' '.substr($object->array_options['options_mydata_reply'], 0, $pos_frst);
-					//limited mark
-					$aade_mark_number_first =  substr($object->array_options['options_mydata_reply'], $pos_frst +1, $pos_scnd - $pos_frst-1);
-				}
-				
-				$aade_mark = 'Μ.ΑΡ.Κ: '.$aade_mark_number_first;
-				$aade_uid = 'ΑΑΔΕ uid: '. $object->array_options['options_mydata_reply_invoiceUid'];
-				$aade_total_reply = $aade_mark.'   -    '.$aade_uid;
-				$pdf->SetTextColor(0, 0, 0);
-				$pdf->SetFont('', '', $default_font_size-5);
-				//$width = $pdf->GetStringWidth($aade_total_reply);
-				$width = $pdf->getPageWidth() * 2/5;
-				$height = $pdf->getNumLines($aade_total_reply);
-				$border = 0;
-				$ln = 0;
-				$align = 'J';
-				$fill = FALSE;
-				$t_posx = 10;
-				$t_posy = 147 * $pdf->getPageHeight() / 150;
-				$pdf->SetXY($t_posx, $t_posy);
-				$pdf->Cell($width, $height, $aade_total_reply, $border, $ln, $align, $fill);
-				
-				//https://tcpdf.org/examples/example_050/
-				$style = array(
-					'border' => 2,
-					'vpadding' => 01, //'auto',
-					'hpadding' => 01, //'auto',
-					'fgcolor' => array(0,0,0),
-					'bgcolor' => false, //array(255,255,255)
-					'module_width' => 1, // width of a single module in points
-					'module_height' => 1 // height of a single module in points
-				);
-				$qr_sizex = 35;
-				$qr_sizey = 35;
-				$t_posx = $pdf->getPageWidth() - $qr_sizex;
-				$t_posy = 125 * $pdf->getPageHeight() / 150;
-				$aade_QR= $object->array_options['options_mydata_reply_QR'];
-				$pdf->SetAlpha(0.5);
-				$pdf->write2DBarcode($aade_QR, 'QRCODE,M', $t_posx, $t_posy, $qr_sizex, $qr_sizey, $style, 'N');
-				$pdf->SetAlpha(1);
-				//-------------->>>>> */
-
 				// Pagefoot
 				$this->_pagefoot($pdf, $object, $outputlangs, 0, $this->getHeightForQRInvoice($pdf->getPage(), $object, $langs));
 				if (method_exists($pdf, 'AliasNbPages')) {
@@ -1140,6 +1061,30 @@ class pdf_arisem extends ModelePDFFactures
 				if (getDolGlobalString('INVOICE_ADD_SWISS_QR_CODE') == 'bottom') {
 					$this->addBottomQRInvoice($pdf, $object, $outputlangs);
 				}
+
+			        if (getDolGlobalString('INVOICE_ADD_GREEK_QR_CODE') == '1') {
+                                 $extrafields = new ExtraFields($this->db);
+                                 $extralabels=$extrafields->fetch_name_optionals_label($object->table_element);
+                                 $object->fetch($rowid);
+                                 $object->fetch_optionals($rowid,$extralabels);
+                                 $url = $object->array_options['options_mydata_reply_QR'];
+
+				$pattern = '/\[(.*?)\]/';
+				if (preg_match($pattern, $object->array_options['options_mydata_reply'], $matches)) {
+    				$mark_result = $matches[1];
+				}
+
+				$aade_invoiceUid = $object->array_options['options_mydata_reply_invoiceUid'] . " MARK " . $mark_result;
+				$doc = new DOMDocument();
+				$doc->loadHTML($url);
+				$aTags = $doc->getElementsByTagName('a');
+				$qrcodestring = $aTags->item(0)->getAttribute('href');				
+
+                                $pdf->write2DBarcode($qrcodestring, 'QRCODE,M', $this->marge_gauche, 245, 200, 25, $styleQr, 'N');
+				$pdf->SetXY(55,275);
+                                $pdf->writeHTMLCell(200, 10, '', '', $aade_invoiceUid, 0, 1);
+                               }
+                                 
 				$pdf->Close();
 
 				$pdf->Output($file, 'F');
@@ -1402,15 +1347,10 @@ class pdf_arisem extends ModelePDFFactures
 				$posy = $pdf->GetY() + 1;
 			}
 
-			//-------------->>>>>
 			// Show payment mode
 			if (!empty($object->mode_reglement_code)
 				&& $object->mode_reglement_code != 'CHQ'
-				&& $object->mode_reglement_code != 'GRELPH'
-				&& $object->mode_reglement_code != 'GRELPA'
-				&& $object->mode_reglement_code != 'GRVAD'
-				&& $object->mode_reglement_code != 'GREPOS'				
-				) {
+				&& $object->mode_reglement_code != 'VIR') {
 				$pdf->SetFont('', 'B', $default_font_size - 2);
 				$pdf->SetXY($this->marge_gauche, $posy);
 				$titre = $outputlangs->transnoentities("PaymentMode").':';
@@ -1478,7 +1418,7 @@ class pdf_arisem extends ModelePDFFactures
 				}
 			}
 
-			// Show payment mode CHQ
+					// Show payment mode CHQ
 			if (empty($object->mode_reglement_code) || $object->mode_reglement_code == 'CHQ') {
 				// If payment mode unregulated or payment mode forced to CHQ
 				if (getDolGlobalInt('FACTURE_CHQ_NUMBER')) {
@@ -1516,10 +1456,8 @@ class pdf_arisem extends ModelePDFFactures
 				}
 			}
 
-			//-------------->>>>>
-			// If payment mode not forced or forced to VIR, show payment with BAN
-			if (empty($object->mode_reglement_code) || $object->mode_reglement_code == 'VIR' || $object->mode_reglement_code == 'GRELPH'
-			|| $object->mode_reglement_code == 'GRELPA'|| $object->mode_reglement_code == 'GRVAD'|| $object->mode_reglement_code == 'GRPOS') {
+					// If payment mode not forced or forced to VIR, show payment with BAN
+			if (empty($object->mode_reglement_code) || $object->mode_reglement_code == 'VIR') {
 				if ($object->fk_account > 0 || $object->fk_bank > 0 || getDolGlobalInt('FACTURE_RIB_NUMBER')) {
 					$bankid = ($object->fk_account <= 0 ? $conf->global->FACTURE_RIB_NUMBER : $object->fk_account);
 					if ($object->fk_bank > 0) {
@@ -1595,8 +1533,10 @@ class pdf_arisem extends ModelePDFFactures
 		$percent = 0;
 		$i = 0;
 		foreach ($object->lines as $line) {
-			$percent += $line->situation_percent;
-			$i++;
+			if ($line->product_type != 9) {
+				$percent += $line->situation_percent;
+				$i++;
+			}
 		}
 
 		if (!empty($i)) {
@@ -1724,7 +1664,8 @@ class pdf_arisem extends ModelePDFFactures
 		// Total remise
 		$total_line_remise = 0;
 		foreach ($object->lines as $i => $line) {
-			$total_line_remise += pdfGetLineTotalDiscountAmount($object, $i, $outputlangs, 2); // TODO: add this method to core/lib/pdf.lib
+			$resdiscount = pdfGetLineTotalDiscountAmount($object, $i, $outputlangs, 2);
+			$total_line_remise += (is_numeric($resdiscount) ? $resdiscount : 0);
 			// Gestion remise sous forme de ligne négative
 			if ($line->total_ht < 0) {
 				$total_line_remise += -$line->total_ht;
@@ -2211,10 +2152,7 @@ class pdf_arisem extends ModelePDFFactures
 			}
 		}
 
-		//-------------->>>>>	
-		#$pdf->SetFont('', 'B', $default_font_size + 3);
-		$pdf->SetFont('', 'B', $default_font_size +2);
-		//-------------->>>>>
+		$pdf->SetFont('', 'B', $default_font_size + 3);
 		$pdf->SetXY($posx, $posy);
 		$pdf->SetTextColor(0, 0, 60);
 		$title = $outputlangs->transnoentities("PdfInvoiceTitle");
