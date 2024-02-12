@@ -9,8 +9,8 @@ $url = $request->getUrl();
 
 $headers = array(
 		// Request headers
-		'aade-user-id' => AADE_USER,
-		'Ocp-Apim-Subscription-Key' => AADE_KEY,
+		'aade-user-id' => getDolGlobalString('MYDATA_AADE_USER'),
+		'Ocp-Apim-Subscription-Key' => getDolGlobalString('MYDATA_AADE_KEY'),
 		);
 
 $request->setHeader($headers);
