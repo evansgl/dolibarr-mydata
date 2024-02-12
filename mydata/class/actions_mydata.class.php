@@ -1,5 +1,6 @@
 <?php
-/* Copyright (C) 2024 SuperAdmin
+/* Copyright (C) 2021-2024 Evangelos Souglakos
+ * Copyright (C) 2024      Nick Fragoulis
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -123,7 +124,6 @@ class ActionsMyDATA extends CommonHookActions
 				    $action = 'create';
 			    }
             } elseif (type == Facture::TYPE_CREDIT_NOTE) {
-        
             	$subtypearray = $object->getArrayOfInvoiceSubtypes(1);
             	$subtype = GETPOST('subtype');
 
@@ -143,6 +143,73 @@ class ActionsMyDATA extends CommonHookActions
         }
 		if (!$error) {
 
+			return 0; // or return 1 to replace standard code
+		} else {
+			$this->errors[] = 'Error message';
+			return -1;
+		}
+	}
+
+
+
+	/**
+	 * Overloading the addMoreActionsButtons function 
+	 *
+	 * @param   array           $parameters     Hook metadatas (context, etc...)
+	 * @param   CommonObject    $object         The object to process (an invoice if you are in invoice module, a propale in propale's module, etc...)
+	 * @param   string          $action         Current action (if set). Generally create or edit or null
+	 * @return  int                             Return integer < 0 on error, 0 on success, 1 to replace standard code
+	 */
+	public function addMoreActionsButtons($parameters, &$object, &$action)
+	{
+		global $conf, $user, $langs;
+
+		$error = 0; // Error counter
+
+        if (in_array('invoicecard', explode(':', $parameters['context'])))
+        {
+            
+            $extrafields = new ExtraFields($this->db);
+		    $extralabels=$extrafields->fetch_name_optionals_label($object->table_element);
+		    $object->fetch($rowid);
+		    $object->fetch_optionals($rowid,$extralabels);          
+
+            if ($object->status == Facture::STATUS_VALIDATED && $object->array_options['options_mydata_check'] == NULL) {
+                $params['attr']['title'] = '';
+                print "\n";
+                print '<script type="text/javascript">';
+                print "function MyDataSendPopup() {\n";
+                print "newpopup('".DOL_URL_ROOT."/custom/mydata/mydataindex.php?mydata=send', '".dol_escape_js($langs->trans('MyDataSend'))."', 1600, 600);\n";
+                print "}\n";
+                print '</script>';
+                print dolGetButtonAction($langs->trans('MyDataSend'), '', 'default', 'javascript:MyDataSendPopup(); location.href = location.href;', '', true, $params);
+            }
+
+				if (!getDolGlobalString('MAIN_DISABLE_PDF_AUTOUPDATE')) {
+					$outputlangs = $langs;
+					$newlang = '';
+					if (getDolGlobalInt('MAIN_MULTILANGS') && empty($newlang) && GETPOST('lang_id', 'aZ09')) {
+						$newlang = GETPOST('lang_id', 'aZ09');
+					}
+					if (getDolGlobalInt('MAIN_MULTILANGS') && empty($newlang)) {
+						$newlang = $object->thirdparty->default_lang;
+					}
+					if (!empty($newlang)) {
+						$outputlangs = new Translate("", $conf);
+						$outputlangs->setDefaultLang($newlang);
+						$outputlangs->load('products');
+					}
+					$model = $object->model_pdf;
+					$ret = $object->fetch($id); // Reload to get new records
+
+					$result = $object->generateDocument($model, $outputlangs, $hidedetails, $hidedesc, $hideref);
+					if ($result < 0) {
+						setEventMessages($object->error, $object->errors, 'errors');
+					}
+        		}	
+		}
+
+		if (!$error) {
 			return 0; // or return 1 to replace standard code
 		} else {
 			$this->errors[] = 'Error message';
