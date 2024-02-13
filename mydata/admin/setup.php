@@ -76,9 +76,9 @@ $type = 'myobject';
 
 $arrayofparameters = array(
 		'MYDATA_DEV'=>array('type'=>'yesno', 'enabled'=>1),
-		'MYDATA_AFM'=>array('type'=>'string', 'css'=>'minwidth100' ,'enabled'=>1),
-		'MYDATA_AADE_USER'=>array('type'=>'string', 'css'=>'minwidth300' ,'enabled'=>1),
-		'MYDATA_AADE_KEY'=>array('type'=>'string', 'css'=>'minwidth300' ,'enabled'=>1),
+		//'MYDATA_AFM'=>array('type'=>'string', 'css'=>'minwidth100' ,'enabled'=>1),
+		//'MYDATA_AADE_USER'=>array('type'=>'string', 'css'=>'minwidth300' ,'enabled'=>1),
+		//'MYDATA_AADE_KEY'=>array('type'=>'string', 'css'=>'minwidth300' ,'enabled'=>1),
 		//	'MYDATA_AADE_SEP1'=>array('type'=>'sep','enabled'=>1),
 		//'MYDATA_INV_TYPE_GR'=>array('type'=>'string', 'css'=>'minwidth300' ,'enabled'=>1),
 		//'MYDATA_INV_TYPE_EU'=>array('type'=>'string', 'css'=>'minwidth300' ,'enabled'=>1),
@@ -106,7 +106,7 @@ $arrayofparameters = array(
 		'MYDATA_SUPPORT_MULTILINE'=>array('type'=>'yesno', 'enabled'=>1),
 		'MYDATA_COUNTRY_DEFAULT'=>array('type'=>'yesno', 'enabled'=>1),
 		'MYDATA_TAXWH'=>array('type'=>'yesno', 'enabled'=>1),
-                'MYDATA_QRCODE'=>array('type'=>'yesno', 'enabled'=>1),
+        'MYDATA_QRCODE'=>array('type'=>'yesno', 'enabled'=>1),
 		//'MYDATA_MYPARAM5'=>array('type'=>'thirdparty_type', 'enabled'=>1),
 		//'MYDATA_MYPARAM6'=>array('type'=>'securekey', 'enabled'=>1),
 		//'MYDATA_MYPARAM7'=>array('type'=>'product', 'enabled'=>1),
@@ -369,6 +369,12 @@ print '<br>';
                 echo "<br>";
 		print '<a href="https://www.aade.gr/sites/default/files/2023-12/myDATA%20API%20Documentation%20v1.0.8_preofficial_erp_0.pdf">Πατήστε εδώ για το PDF myDATA Ηλεκτρονικά Βιβλία ΑΑΔΕ</a>';
 		print '<br>';
+		print '<br>';
+		echo "<strong>Τα credentials(username, password) των λογαριασμών της ΑΑΔΕ και τον Α.Φ.Μ.</strong><br>";
+        echo '<strong><a href="'.(DOL_URL_ROOT.'/admin/company.php').'">'.$langs->trans("αποθηκεύστε τα εδώ").'</a></strong>';
+		print '<br>';
+		print '<br>';
+		
 
 		print '<table class="noborder centpercent">';
 		print '<tr class="liste_titre"><td class="titlefield">'.$langs->trans("Parameter").'</td><td>'.$langs->trans("Value").'</td></tr>';
