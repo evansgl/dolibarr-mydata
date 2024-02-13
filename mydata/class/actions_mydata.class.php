@@ -111,8 +111,8 @@ class ActionsMyDATA extends CommonHookActions
 		    if (type == Facture::TYPE_STANDARD) {
                 $subtypearray = $object->getArrayOfInvoiceSubtypes(1);
                 $subtype = GETPOST('subtype');
-
-			    foreach ($subtypearray as $code => $rowid) {
+                $selectedcode = '';
+				foreach ($subtypearray as $code => $rowid) {
 				    if ($rowid == $subtype) {
 					    $selectedcode = $code;
 					    break;
@@ -126,7 +126,7 @@ class ActionsMyDATA extends CommonHookActions
             } elseif (type == Facture::TYPE_CREDIT_NOTE) {
             	$subtypearray = $object->getArrayOfInvoiceSubtypes(1);
             	$subtype = GETPOST('subtype');
-
+				$selectedcode = '';
 				foreach ($subtypearray as $code => $rowid) {
 					if ($rowid == $subtype) {
 						$selectedcode = $code;
@@ -163,7 +163,11 @@ class ActionsMyDATA extends CommonHookActions
 	public function addMoreActionsButtons($parameters, &$object, &$action)
 	{
 		global $conf, $user, $langs;
-
+		$id = (GETPOST('id', 'int') ? GETPOST('id', 'int') : GETPOST('facid', 'int'));    // For backward compatibility
+        $rowid = (GETPOST('rowid', 'int') ? GETPOST('rowid', 'int') : GETPOST('facid', 'int'));    // For backward compatibility
+        $hidedetails = (GETPOST('hidedetails', 'int') ? GETPOST('hidedetails', 'int') : (getDolGlobalString('MAIN_GENERATE_DOCUMENTS_HIDE_DETAILS') ? 1 : 0));
+        $hidedesc = (GETPOST('hidedesc', 'int') ? GETPOST('hidedesc', 'int') : (getDolGlobalString('MAIN_GENERATE_DOCUMENTS_HIDE_DESC') ? 1 : 0));
+        $hideref = (GETPOST('hideref', 'int') ? GETPOST('hideref', 'int') : (getDolGlobalString('MAIN_GENERATE_DOCUMENTS_HIDE_REF') ? 1 : 0));
 		$error = 0; // Error counter
 
         if (in_array('invoicecard', explode(':', $parameters['context'])))
