@@ -396,7 +396,7 @@ while ($row = $result->fetch_assoc())
 	}
 
 	//Do not use serial for apodeikseis
-	if ($INVOICE_APODIXI_NUM == 1) {
+	if (INVOICE_APODIXI_NUM == 1) {
 
 		if ($mydata_type == "2" || $mydata_type == "3")
 		{
