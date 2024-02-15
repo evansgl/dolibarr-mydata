@@ -43,7 +43,7 @@ require_once DOL_DOCUMENT_ROOT.'/core/lib/pdf.lib.php';
 /**
  *	Class to manage PDF invoice template sponge
  */
-class pdf_sponge extends ModelePDFFactures
+class pdf_sponge_qr extends ModelePDFFactures
 {
 	/**
 	 * @var DoliDb Database handler
@@ -131,7 +131,7 @@ class pdf_sponge extends ModelePDFFactures
 		$langs->loadLangs(array("main", "bills"));
 
 		$this->db = $db;
-		$this->name = "sponge";
+		$this->name = "sponge_qr";
 		$this->description = $langs->trans('PDFSpongeDescription');
 		$this->update_main_doc_field = 1; // Save the name of generated file as the main doc when generating a doc with this template
 
@@ -460,6 +460,12 @@ class pdf_sponge extends ModelePDFFactures
 					$qrcodestring = $object->buildZATCAQRString();
 				} elseif (getDolGlobalString('INVOICE_ADD_SWISS_QR_CODE') == '1') {
 					$qrcodestring = $object->buildSwitzerlandQRString();
+				} elseif (getDolGlobalString('MYDATA_QRCODE')) {
+					$extrafields = new ExtraFields($this->db);
+					$extralabels=$extrafields->fetch_name_optionals_label($object->table_element);
+					$object->fetch($rowid);
+					$object->fetch_optionals($rowid,$extralabels);
+					$qrcodestring = $object->array_options['options_mydata_reply_QR'];
 				}
 				if ($qrcodestring) {
 					$qrcodecolor = array('25', '25', '25');
@@ -472,8 +478,12 @@ class pdf_sponge extends ModelePDFFactures
 						'module_width' => 1, // width of a single module in points
 						'module_height' => 1 // height of a single module in points
 					);
-					$pdf->write2DBarcode($qrcodestring, 'QRCODE,M', $this->marge_gauche, $this->tab_top - 5, 25, 25, $styleQr, 'N');
-					$extra_under_address_shift += 25;
+					if (getDolGlobalString('MYDATA_QRCODE') == '1') {
+						$pdf->SetAlpha(0.5);
+						$pdf->write2DBarcode($qrcodestring, 'QRCODE,M', $this->marge_gauche, 245, 200, 19, $styleQr, 'N');
+						$pdf->SetXY(55,275);
+						$pdf->SetAlpha(1);
+					}
 				}
 
 				// Call hook printUnderHeaderPDFline
