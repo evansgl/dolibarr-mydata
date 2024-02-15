@@ -429,8 +429,8 @@ class modMyDATA extends DolibarrModules
 		$result4=$extrafields->update('mydata_reply', "MyDATA Reply", 'varchar', 255, 'facture',   0, 0, 201,  '', 1, '', 5, "AADE MARK code and date sent", '', '',  1, '');
 		$result5=$extrafields->addExtraField('mydata_type', "Είδος παραστατικού ΑΑΔΕ", 'select',  202, '', 'facture',   0, 0, '', array('options'=>array('0'=>'Τιμολόγιο Πώλησης','1'=>'Τιμολόγιο Παροχής Υπηρεσιών','2'=>'Απόδειξη Λιανικής Πώλησης','3'=>'Απόδειξη Παροχής Υπηρεσιών','4'=>'Πιστωτικό Τιμολόγιο','5'=>'Πιστωτικό Λιανικής')), 1,'', 5, 1, '', '1', '', '');
         $result6=$extrafields->update('mydata_type', "Είδος παραστατικού ΑΑΔΕ", 'select',  '', 'facture',   0, 0, 202, array('options'=>array('0'=>'Τιμολόγιο Πώλησης','1'=>'Τιμολόγιο Παροχής Υπηρεσιών','2'=>'Απόδειξη Λιανικής Πώλησης','3'=>'Απόδειξη Παροχής Υπηρεσιών','4'=>'Πιστωτικό Τιμολόγιο','5'=>'Πιστωτικό Λιανικής')), 1,'', 5, "Select Invoice Type", '', '', '', '');
-		$resultrec7=$extrafields->addExtraField('mydata_reply_QR', "MyDATA QR Reply", 'varchar', 203,  255, 'facture',   0, 0, '', '', 1, '', 5, "AADE QR Received", '', '', 1, '');
-		$resultrec8=$extrafields->update('mydata_reply_QR', "MyDATA QR Reply", 'varchar', 255, 'facture',   0, 0, 203, '', 1, '', 5, "AADE QR Received", '', '', 1, '');
+		$resultrec7=$extrafields->addExtraField('mydata_reply_QR', "MyDATA QR Reply", 'url', 203,  255, 'facture',   0, 0, '', '', 1, '', 5, "AADE QR Received", '', '', 1, '');
+		$resultrec8=$extrafields->update('mydata_reply_QR', "MyDATA QR Reply", 'url', 255, 'facture',   0, 0, 203, '', 1, '', 5, "AADE QR Received", '', '', 1, '');
 		$resultrec9=$extrafields->addExtraField('mydata_reply_invoiceUid', "MyDATA invoiceUid Reply", 'varchar', 204,  255, 'facture',   0, 0, '', '', 1, '', 5, "AADE invoiceUid Received", '', '', 1, '');
 		$resultrec9=$extrafields->update('mydata_reply_invoiceUid', "MyDATA invoiceUid Reply", 'varchar', 255, 'facture', 0, 0, 204, '', 1, '', 5, "AADE invoiceUid Received", '', '', 1, '');
 		if(MYDATA_TAXWH == 1) {
@@ -445,8 +445,8 @@ class modMyDATA extends DolibarrModules
 		$result4=$extrafields->update('mydata_reply', "MyDATA Reply", 'varchar', 255, 'facture_rec',   0, 0, 201,  '', 1, '', 5, "AADE MARK code and date sent", '', '',  1, '');
 		$result5=$extrafields->addExtraField('mydata_type', "Είδος παραστατικού ΑΑΔΕ", 'select',  202, '', 'facture_rec',   0, 0, '', array('options'=>array('0'=>'Τιμολόγιο Πώλησης','1'=>'Τιμολόγιο Παροχής Υπηρεσιών','2'=>'Απόδειξη Λιανικής Πώλησης','3'=>'Απόδειξη Παροχής Υπηρεσιών','4'=>'Πιστωτικό Τιμολόγιο','5'=>'Πιστωτικό Λιανικής')), 1, '', 5, 1, '', '1', '', '');
         $result6=$extrafields->update('mydata_type', "Είδος παραστατικού ΑΑΔΕ", 'select',  '', 'facture_rec',   0, 0, 202, array('options'=>array('0'=>'Τιμολόγιο Πώλησης','1'=>'Τιμολόγιο Παροχής Υπηρεσιών','2'=>'Απόδειξη Λιανικής Πώλησης','3'=>'Απόδειξη Παροχής Υπηρεσιών','4'=>'Πιστωτικό Τιμολόγιο','5'=>'Πιστωτικό Λιανικής')), 1,'', 5, "Select Invoice Type", '', '', '', '');
-		$resultrec7=$extrafields->addExtraField('mydata_reply_QR', "MyDATA QR Reply", 'varchar', 203,  255, 'facture_rec',   0, 0, '', '', 1, '', 5, "AADE QR Received", '', '', 1, '');
-		$resultrec8=$extrafields->update('mydata_reply_QR', "MyDATA QR Reply", 'varchar', 255, 'facture_rec',   0, 0, 203, '', 1, '', 5, "AADE QR Received", '', '', 1, '');
+		$resultrec7=$extrafields->addExtraField('mydata_reply_QR', "MyDATA QR Reply", 'url', 203,  255, 'facture_rec',   0, 0, '', '', 1, '', 5, "AADE QR Received", '', '', 1, '');
+		$resultrec8=$extrafields->update('mydata_reply_QR', "MyDATA QR Reply", 'url', 255, 'facture_rec',   0, 0, 203, '', 1, '', 5, "AADE QR Received", '', '', 1, '');
 		$resultrec9=$extrafields->addExtraField('mydata_reply_invoiceUid', "MyDATA invoiceUid Reply", 'varchar', 204,  255, 'facture_rec',   0, 0, '', '', 1, '', 5, "AADE invoiceUid Received", '', '', 1, '');
 		$resultrec9=$extrafields->update('mydata_reply_invoiceUid', "MyDATA invoiceUid Reply", 'varchar', 255, 'facture_rec', 0, 0, 204, '', 1, '', 5, "AADE invoiceUid Received", '', '', 1, '');
 		if(MYDATA_TAXWH == 1) {
