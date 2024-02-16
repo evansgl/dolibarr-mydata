@@ -108,7 +108,7 @@ class ActionsMyDATA extends CommonHookActions
 
         if (in_array('invoicecard', explode(':', $parameters['context'])))
         {
-		    if (type == Facture::TYPE_STANDARD) {
+		    if (GETPOST('type') == Facture::TYPE_STANDARD) {
                 $subtypearray = $object->getArrayOfInvoiceSubtypes(1);
                 $subtype = GETPOST('subtype');
                 $selectedcode = '';
@@ -123,7 +123,7 @@ class ActionsMyDATA extends CommonHookActions
 				    setEventMessages($langs->trans("ErrorInvalidSubtype"), null, 'errors');
 				    $action = 'create';
 			    }
-            } elseif (type == Facture::TYPE_CREDIT_NOTE) {
+            } elseif (GETPOST('type') == Facture::TYPE_CREDIT_NOTE) {
             	$subtypearray = $object->getArrayOfInvoiceSubtypes(1);
             	$subtype = GETPOST('subtype');
 				$selectedcode = '';
