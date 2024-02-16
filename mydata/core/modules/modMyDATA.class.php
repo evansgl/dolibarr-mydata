@@ -119,7 +119,7 @@ class modMyDATA extends DolibarrModules
 				'data' => array(
 					'invoicecard',
 				),
-				'entity' => '0',
+				'entity' => '1',
 			),
 			// Set this to 1 if features of module are opened to external users
 			'moduleforexternal' => 0,
@@ -158,7 +158,8 @@ class modMyDATA extends DolibarrModules
 		// Example: $this->const=array(1 => array('MYDATA_MYNEWCONST1', 'chaine', 'myvalue', 'This is a constant to add', 1),
 		//                             2 => array('MYDATA_MYNEWCONST2', 'chaine', 'myvalue', 'This is another constant to add', 0, 'current', 1)
 		// );
-		$this->const = array(0 => array('MAIN_MODULE_MYDATA_HOOKS', 'chaine', 'invoicecard', 'Hooks modifying MYDATA TYPE for invoice', 1),);
+		$this->const = array(0 => array('MAIN_MODULE_MYDATA_HOOKS', 'chaine', 'invoicecard', 'Hooks modifying MYDATA TYPE for invoice', 1),
+							 1 => array('MYDATA_QRCODE', 'chaine', '1', 'Print QR in pdf', 0, 'current', 1));
 
 		// Some keys to add into the overwriting translation tables
 		/*$this->overwrite_translation = array(
