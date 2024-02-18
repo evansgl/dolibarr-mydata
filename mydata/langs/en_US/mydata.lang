@@ -50,7 +50,7 @@ MYDATA_VAT_EXEMP_CATEG_3RD = Κατηγορία Αιτίας Εξαίρεσης 
 MYDATA_VAT_EXEMP_CATEG_3RDTooltip =  Κατηγορία Αιτίας Εξαίρεσης ΦΠΑ σε Τρίτες χώρες
 
 MYDATA_QRCODE = Εμφάνιση ΑΑΔΕ QR Code στο παραστατικό με χρήση του pdf template sponge_qr
-MYDATA_QRCODETooltip = Χρειάζεται να ενεργοποιήσετε το pdf template sponge_qr από Αρχική->Ρυθμίσεις->Τιμολόγια
+MYDATA_QRCODETooltip = Χρειάζεται να ενεργοποιήσετε το pdf template sponge_qr από Αρχική->Ρυθμίσεις->Ενότητες / Εφαρμογές->Τιμολόγια
 
 MYDATA_CLASSIFICATION_CATEGORY = Κωδικός Κατηγορίας Χαρακτηρισμού Εσόδων
 MYDATA_CLASSIFICATION_CATEGORYTooltip = Κωδικός Κατηγορίας Χαρακτηρισμού Εσόδων
