@@ -366,7 +366,7 @@ print '<br>';
 		print '<a href="https://www.aade.gr/sites/default/files/2023-12/myDATA%20API%20Documentation%20v1.0.8_preofficial_erp_0.pdf">Πατήστε εδώ για το PDF myDATA Ηλεκτρονικά Βιβλία ΑΑΔΕ</a>';
 		print '<br>';
 		print '<br>';
-		print "<strong><a href='".(DOL_URL_ROOT.'/admin/company.php#AADE Webservice Credentials')."' target='_blank'>Τα credentials (username και password) των λογαριασμών της ΑΑΔΕ και τον Α.Φ.Μ. συμπληρώστε τα εδώ</a></strong>";
+		print "<strong><a href='".(DOL_URL_ROOT.'/admin/company.php')."' target='_blank'>Τα credentials (username και password) των λογαριασμών της ΑΑΔΕ και τον Α.Φ.Μ. συμπληρώστε τα εδώ</a></strong>";
 		print '<br>';
 		print '<br>';
 		
