@@ -466,6 +466,11 @@ class pdf_sponge_qr extends ModelePDFFactures
 					$object->fetch($rowid);
 					$object->fetch_optionals($rowid,$extralabels);
 					$qrcodestring = $object->array_options['options_mydata_reply_QR'];
+					$pattern = '/\[(.*?)\]/';
+					if (preg_match($pattern, $object->array_options['options_mydata_reply'], $matches)) {
+    				    $mark_result = $matches[1];
+				    }
+					$aade_invoiceUid = $object->array_options['options_mydata_reply_invoiceUid'] . " MARK " . $mark_result;
 				}
 				if ($qrcodestring) {
 					$qrcodecolor = array('25', '25', '25');
