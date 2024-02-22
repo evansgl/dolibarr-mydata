@@ -488,6 +488,7 @@ class pdf_sponge_qr extends ModelePDFFactures
 						$pdf->write2DBarcode($qrcodestring, 'QRCODE,M', $this->marge_gauche, 245, 200, 19, $styleQr, 'N');
 						$pdf->SetXY(55,275);
 						$pdf->SetAlpha(1);
+						$pdf->writeHTMLCell(200, 10, '', '', $aade_invoiceUid, 0, 1);
 					}
 				}
 
