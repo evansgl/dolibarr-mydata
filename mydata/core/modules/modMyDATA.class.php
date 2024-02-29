@@ -89,7 +89,7 @@ class modMyDATA extends DolibarrModules
 		// Define some features supported by module (triggers, login, substitutions, menus, css, etc...)
 		$this->module_parts = array(
 			// Set this to 1 if module has its own trigger directory (core/triggers)
-			'triggers' => 0,
+			'triggers' => 1,
 			// Set this to 1 if module has its own login method file (core/login)
 			'login' => 0,
 			// Set this to 1 if module has its own substitution function file (core/substitutions)
@@ -101,7 +101,7 @@ class modMyDATA extends DolibarrModules
 			// Set this to 1 if module has its own barcode directory (core/modules/barcode)
 			'barcode' => 0,
 			// Set this to 1 if module has its own models directory (core/modules/xxx)
-			'models' => 0,
+			'models' => 1,
 			// Set this to 1 if module has its own printing directory (core/modules/printing)
 			'printing' => 0,
 			// Set this to 1 if module has its own theme directory (theme)
@@ -116,11 +116,10 @@ class modMyDATA extends DolibarrModules
 			),
 			// Set here all hooks context managed by module. To find available hook context, make a "grep -r '>initHooks(' *" on source code. You can also set hook context to 'all'
 			'hooks' => array(
-				//   'data' => array(
-				//       'hookcontext1',
-				//       'hookcontext2',
-				//   ),
-				//   'entity' => '0',
+				'data' => array(
+					'invoicecard',
+				),
+				'entity' => '1',
 			),
 			// Set this to 1 if features of module are opened to external users
 			'moduleforexternal' => 0,
@@ -159,7 +158,8 @@ class modMyDATA extends DolibarrModules
 		// Example: $this->const=array(1 => array('MYDATA_MYNEWCONST1', 'chaine', 'myvalue', 'This is a constant to add', 1),
 		//                             2 => array('MYDATA_MYNEWCONST2', 'chaine', 'myvalue', 'This is another constant to add', 0, 'current', 1)
 		// );
-		$this->const = array();
+		$this->const = array(0 => array('MAIN_MODULE_MYDATA_HOOKS', 'chaine', 'invoicecard', 'Hooks modifying MYDATA TYPE for invoice', 1),
+							 1 => array('MYDATA_QRCODE', 'chaine', '1', 'Print QR in pdf', 0, 'current', 1));
 
 		// Some keys to add into the overwriting translation tables
 		/*$this->overwrite_translation = array(
@@ -425,13 +425,13 @@ class modMyDATA extends DolibarrModules
 		// Update operation is required to fix previous module versions that were inserted a wrong type
 		//invoice
 		$result1=$extrafields->addExtraField('mydata_check', "MyDATA Sent", 'boolean', 200,  '', 'facture',      0, 0, '', '', 1, '', 1, "If is checked means it was sent succesfully", '', '', '', '');
-        	$result2=$extrafields->update('mydata_check', "MyDATA Sent", 'boolean',  '', 'facture',   0, 0, 200, '', 1,'', 1, 'If is checked means it was sent succesfully', '', '', '', '');
-        	$result3=$extrafields->addExtraField('mydata_reply', "MyDATA Reply", 'varchar', 201,  255, 'facture',   0, 0, '', '', 1, '', 5, "AADE MARK code and date sent", '', '', '', '');
+        $result2=$extrafields->update('mydata_check', "MyDATA Sent", 'boolean',  '', 'facture',   0, 0, 200, '', 1,'', 1, 'If is checked means it was sent succesfully', '', '', '', '');
+        $result3=$extrafields->addExtraField('mydata_reply', "MyDATA Reply", 'varchar', 201,  255, 'facture',   0, 0, '', '', 1, '', 5, "AADE MARK code and date sent", '', '', '', '');
 		$result4=$extrafields->update('mydata_reply', "MyDATA Reply", 'varchar', 255, 'facture',   0, 0, 201,  '', 1, '', 5, "AADE MARK code and date sent", '', '',  1, '');
-		$result5=$extrafields->addExtraField('mydata_type', "Είδος παραστατικού ΑΑΔΕ", 'select',  202, '', 'facture',   0, 0, '', array('options'=>array('0'=>'Τιμολόγιο Πώλησης','1'=>'Τιμολόγιο Παροχής Υπηρεσιών','2'=>'Απόδειξη Λιανικής Πώλησης','3'=>'Απόδειξη Παροχής Υπηρεσιών','4'=>'Πιστωτικό Τιμολόγιο','5'=>'Πιστωτικό Λιανικής')), 1,'', 1, 1, '', '1', '', '');
-        	$result6=$extrafields->update('mydata_type', "Είδος παραστατικού ΑΑΔΕ", 'select',  '', 'facture',   0, 0, 202, array('options'=>array('0'=>'Τιμολόγιο Πώλησης','1'=>'Τιμολόγιο Παροχής Υπηρεσιών','2'=>'Απόδειξη Λιανικής Πώλησης','3'=>'Απόδειξη Παροχής Υπηρεσιών','4'=>'Πιστωτικό Τιμολόγιο','5'=>'Πιστωτικό Λιανικής')), 1,'', 1, "Select Invoice Type", '', '', '', '');
-		$resultrec7=$extrafields->addExtraField('mydata_reply_QR', "MyDATA QR Reply", 'varchar', 203,  255, 'facture',   0, 0, '', '', 1, '', 5, "AADE QR Received", '', '', 1, '');
-		$resultrec8=$extrafields->update('mydata_reply_QR', "MyDATA QR Reply", 'varchar', 255, 'facture',   0, 0, 203, '', 1, '', 5, "AADE QR Received", '', '', 1, '');
+		$result5=$extrafields->addExtraField('mydata_type', "Είδος παραστατικού ΑΑΔΕ", 'select',  202, '', 'facture',   0, 0, '', array('options'=>array('0'=>'Τιμολόγιο Πώλησης','1'=>'Τιμολόγιο Παροχής Υπηρεσιών','2'=>'Απόδειξη Λιανικής Πώλησης','3'=>'Απόδειξη Παροχής Υπηρεσιών','4'=>'Πιστωτικό Τιμολόγιο','5'=>'Πιστωτικό Λιανικής')), 1,'', 5, 1, '', '1', '', '');
+        $result6=$extrafields->update('mydata_type', "Είδος παραστατικού ΑΑΔΕ", 'select',  '', 'facture',   0, 0, 202, array('options'=>array('0'=>'Τιμολόγιο Πώλησης','1'=>'Τιμολόγιο Παροχής Υπηρεσιών','2'=>'Απόδειξη Λιανικής Πώλησης','3'=>'Απόδειξη Παροχής Υπηρεσιών','4'=>'Πιστωτικό Τιμολόγιο','5'=>'Πιστωτικό Λιανικής')), 1,'', 5, "Select Invoice Type", '', '', '', '');
+		$resultrec7=$extrafields->addExtraField('mydata_reply_QR', "MyDATA QR Reply", 'url', 203,  255, 'facture',   0, 0, '', '', 1, '', 5, "AADE QR Received", '', '', 1, '');
+		$resultrec8=$extrafields->update('mydata_reply_QR', "MyDATA QR Reply", 'url', 255, 'facture',   0, 0, 203, '', 1, '', 5, "AADE QR Received", '', '', 1, '');
 		$resultrec9=$extrafields->addExtraField('mydata_reply_invoiceUid', "MyDATA invoiceUid Reply", 'varchar', 204,  255, 'facture',   0, 0, '', '', 1, '', 5, "AADE invoiceUid Received", '', '', 1, '');
 		$resultrec9=$extrafields->update('mydata_reply_invoiceUid', "MyDATA invoiceUid Reply", 'varchar', 255, 'facture', 0, 0, 204, '', 1, '', 5, "AADE invoiceUid Received", '', '', 1, '');
 		if(MYDATA_TAXWH == 1) {
@@ -441,13 +441,13 @@ class modMyDATA extends DolibarrModules
 
 		//recurring invoice
 		$result1=$extrafields->addExtraField('mydata_check', "MyDATA Sent", 'boolean', 200,  '', 'facture_rec',      0, 0, '', '', 1, '', 1, "If is checked means it was sent succesfully", '', '', '', '');
-        	$result2=$extrafields->update('mydata_check', "MyDATA Sent", 'boolean',  '', 'facture_rec',   0, 0, 200, '', 1,'', 1, 'If is checked means it was sent succesfully', '', '', '', '');
-        	$result3=$extrafields->addExtraField('mydata_reply', "MyDATA Reply", 'varchar', 201,  255, 'facture_rec',   0, 0, '', '', 1, '', 5, "AADE MARK code and date sent", '', '', '', '');
+        $result2=$extrafields->update('mydata_check', "MyDATA Sent", 'boolean',  '', 'facture_rec',   0, 0, 200, '', 1,'', 1, 'If is checked means it was sent succesfully', '', '', '', '');
+        $result3=$extrafields->addExtraField('mydata_reply', "MyDATA Reply", 'varchar', 201,  255, 'facture_rec',   0, 0, '', '', 1, '', 5, "AADE MARK code and date sent", '', '', '', '');
 		$result4=$extrafields->update('mydata_reply', "MyDATA Reply", 'varchar', 255, 'facture_rec',   0, 0, 201,  '', 1, '', 5, "AADE MARK code and date sent", '', '',  1, '');
-		$result5=$extrafields->addExtraField('mydata_type', "Είδος παραστατικού ΑΑΔΕ", 'select',  202, '', 'facture_rec',   0, 0, '', array('options'=>array('0'=>'Τιμολόγιο Πώλησης','1'=>'Τιμολόγιο Παροχής Υπηρεσιών','2'=>'Απόδειξη Λιανικής Πώλησης','3'=>'Απόδειξη Παροχής Υπηρεσιών','4'=>'Πιστωτικό Τιμολόγιο','5'=>'Πιστωτικό Λιανικής')), 1,'', 1, 1, '', '1', '', '');
-        	$result6=$extrafields->update('mydata_type', "Είδος παραστατικού ΑΑΔΕ", 'select',  '', 'facture_rec',   0, 0, 202, array('options'=>array('0'=>'Τιμολόγιο Πώλησης','1'=>'Τιμολόγιο Παροχής Υπηρεσιών','2'=>'Απόδειξη Λιανικής Πώλησης','3'=>'Απόδειξη Παροχής Υπηρεσιών','4'=>'Πιστωτικό Τιμολόγιο','5'=>'Πιστωτικό Λιανικής')), 1,'', 1, "Select Invoice Type", '', '', '', '');
-		$resultrec7=$extrafields->addExtraField('mydata_reply_QR', "MyDATA QR Reply", 'varchar', 203,  255, 'facture_rec',   0, 0, '', '', 1, '', 5, "AADE QR Received", '', '', 1, '');
-		$resultrec8=$extrafields->update('mydata_reply_QR', "MyDATA QR Reply", 'varchar', 255, 'facture_rec',   0, 0, 203, '', 1, '', 5, "AADE QR Received", '', '', 1, '');
+		$result5=$extrafields->addExtraField('mydata_type', "Είδος παραστατικού ΑΑΔΕ", 'select',  202, '', 'facture_rec',   0, 0, '', array('options'=>array('0'=>'Τιμολόγιο Πώλησης','1'=>'Τιμολόγιο Παροχής Υπηρεσιών','2'=>'Απόδειξη Λιανικής Πώλησης','3'=>'Απόδειξη Παροχής Υπηρεσιών','4'=>'Πιστωτικό Τιμολόγιο','5'=>'Πιστωτικό Λιανικής')), 1, '', 5, 1, '', '1', '', '');
+        $result6=$extrafields->update('mydata_type', "Είδος παραστατικού ΑΑΔΕ", 'select',  '', 'facture_rec',   0, 0, 202, array('options'=>array('0'=>'Τιμολόγιο Πώλησης','1'=>'Τιμολόγιο Παροχής Υπηρεσιών','2'=>'Απόδειξη Λιανικής Πώλησης','3'=>'Απόδειξη Παροχής Υπηρεσιών','4'=>'Πιστωτικό Τιμολόγιο','5'=>'Πιστωτικό Λιανικής')), 1,'', 5, "Select Invoice Type", '', '', '', '');
+		$resultrec7=$extrafields->addExtraField('mydata_reply_QR', "MyDATA QR Reply", 'url', 203,  255, 'facture_rec',   0, 0, '', '', 1, '', 5, "AADE QR Received", '', '', 1, '');
+		$resultrec8=$extrafields->update('mydata_reply_QR', "MyDATA QR Reply", 'url', 255, 'facture_rec',   0, 0, 203, '', 1, '', 5, "AADE QR Received", '', '', 1, '');
 		$resultrec9=$extrafields->addExtraField('mydata_reply_invoiceUid', "MyDATA invoiceUid Reply", 'varchar', 204,  255, 'facture_rec',   0, 0, '', '', 1, '', 5, "AADE invoiceUid Received", '', '', 1, '');
 		$resultrec9=$extrafields->update('mydata_reply_invoiceUid', "MyDATA invoiceUid Reply", 'varchar', 255, 'facture_rec', 0, 0, 204, '', 1, '', 5, "AADE invoiceUid Received", '', '', 1, '');
 		if(MYDATA_TAXWH == 1) {

@@ -1,9 +1,9 @@
 <?php
 
-define("AADE_USER", $conf->global->MYDATA_AADE_USER); // your aade_user
-define("AADE_KEY",  $conf->global->MYDATA_AADE_KEY); // your aade key
+//define("AADE_USER", $conf->global->MYDATA_AADE_USER); // your aade_user
+//define("AADE_KEY",  $conf->global->MYDATA_AADE_KEY); // your aade key
 
-define("VAT_NUMBER", $conf->global->MYDATA_AFM); // Your company's VAT number (only number, without EL in front)
+//define("VAT_NUMBER", $conf->global->MYDATA_AFM); // Your company's VAT number (only number, without EL in front)
 
 
 /* Select the syntax / name of your invoice - ONLY ONE SELECTION */

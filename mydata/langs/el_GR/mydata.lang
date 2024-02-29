@@ -32,18 +32,8 @@ MyDATASetupPage = MyDATA Configuration
 MYDATA_DEV = Αποστολή μόνο στο δοκιμαστικό περιβάλλον myDATA
 MYDATA_DEVTooltip = Αποστολή μόνο στο δοκιμάστικό (development) περιβάλλον του MyDATA
 
-MYDATA_AFM = Εταιρικό ΑΦΜ 
-MYDATA_AFMTooltip = Μόνο τον αριθμό του εταιρικού σας ΑΦΜ
-
-MYDATA_AADE_USER = AADE User
-MYDATA_AADE_USERTooltip = Το όνομα χρήστη του λογαριασμού της AADE
-
-MYDATA_AADE_KEY = AADE Key
-MYDATA_AADE_KEYTooltip Το κλειδί του λογαριασμού της AADE
-
 MYDATA_INV_TYPE_GR = Είδος παραστατικού (Ελλάδα)
 MYDATA_INV_TYPE_GRTooltip Αντικριζόμενα Παραστατικά για πώληση σε Ελλάδα <br> 1.1 Τιμολόγιο Πώλησης <br> 2.1 Τιμολόγιο Παροχής <br> 
-
  
 MYDATA_INV_TYPE_EU = Είδος παραστατικού (Ευρωπαική Ένωση)
 MYDATA_INV_TYPE_EUTooltip =
@@ -58,8 +48,8 @@ MYDATA_VAT_EXEMP_CATEG_EUTooltip Εξαίρεση ΦΠΑ σε Ευρωπαική
 MYDATA_VAT_EXEMP_CATEG_3RD = Κατηγορία Αιτίας Εξαίρεσης ΦΠΑ (Τρίτες χώρες)
 MYDATA_VAT_EXEMP_CATEG_3RDTooltip =  Κατηγορία Αιτίας Εξαίρεσης ΦΠΑ σε Τρίτες χώρες
 
-MYDATA_QRCODE = Εμφάνιση ΑΑΔΕ QR Code στο παραστατικό
-MYDATA_QRCODETooltip = Χρειαζεται να αντιγράψετε (και αντικαταστήσετε) το pdf template file  από το φάκελο: custom/mydata/core/modules/facture/doc/pdf_sponge.modules.php -> core/modules/facture/doc/pdf_sponge.modules.php
+MYDATA_QRCODE = Εμφάνιση ΑΑΔΕ QR Code στο παραστατικό με χρήση του pdf template sponge_qr
+MYDATA_QRCODETooltip = Χρειάζεται να ενεργοποιήσετε το pdf template sponge_qr από Αρχική->Ρυθμίσεις->Ενότητες / Εφαρμογές->Τιμολόγια
 
 MYDATA_CLASSIFICATION_CATEGORY = Κωδικός Κατηγορίας Χαρακτηρισμού Εσόδων
 MYDATA_CLASSIFICATION_CATEGORYTooltip = Κωδικός Κατηγορίας Χαρακτηρισμού Εσόδων

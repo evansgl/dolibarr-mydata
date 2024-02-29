@@ -178,7 +178,13 @@ while ($row = $result->fetch_assoc())
 	$city = $row["town"];
 	$po = $row["zip"];
 	$vat_percent = $row["vat_percent"];
-	$vat = preg_replace('/\D/', '', $row["tva_intra"]);
+	$vat = preg_replace('/\^\w/', '', $row["tva_intra"]);
+	$vat = str_replace(array(' ', '.'), '', $vat);
+	$countryCode = substr($vat, 0, 2);
+	if (strlen(preg_replace('/\D/', '', $countryCode))==0) // if contryCode is only letters then do remove them
+	{	
+		$vat = substr($vat, 2);
+	}
 	$mydata = $row["mydata_reply"];
 	$mydata_check = $row["mydata_check"];
 	$net = abs(number_format($row["multicurrency_total_ht"],2,'.',''));
@@ -390,7 +396,7 @@ while ($row = $result->fetch_assoc())
 	}
 
 	//Do not use serial for apodeikseis
-	if ($INVOICE_APODIXI_NUM == 1) {
+	if (INVOICE_APODIXI_NUM == 1) {
 
 		if ($mydata_type == "2" || $mydata_type == "3")
 		{

@@ -9,8 +9,8 @@ $url = $request->getUrl();
 
 $headers = array(
 		// Request headers
-		'aade-user-id' => AADE_USER,
-		'Ocp-Apim-Subscription-Key' => AADE_KEY,
+		'aade-user-id' => getDolGlobalString('MYDATA_AADE_USER'),
+		'Ocp-Apim-Subscription-Key' => getDolGlobalString('MYDATA_AADE_KEY'),
 		);
 
 $request->setHeader($headers);
@@ -33,7 +33,7 @@ xsi:schemaLocation="http://www.aade.gr/myDATA/invoice/v1.0 schema.xsd">
 
 <invoice>
 <issuer>
- <vatNumber>'.preg_replace('/\D/', '', VAT_NUMBER).'</vatNumber>
+ <vatNumber>'.preg_replace('/\D/', '', getDolGlobalString('MAIN_INFO_TVAINTRA')).'</vatNumber>
  <country>GR</country>
  <branch>0</branch>
 </issuer>
@@ -222,8 +222,8 @@ try
 		{
 			$mydata = $datetime ." [". $xmlreply->response[0]->invoiceMark ."]" ;
 			$mydata_check = 1;
-			//$mydata_QR = $xmlreply->response[0]->qrUrl;
-			$mydata_QR = '<a href="' . $xmlreply->response[0]->qrUrl . '" target="_blank">Επιβεβαίωση Παραστατικού</a>';
+			$mydata_QR = $xmlreply->response[0]->qrUrl;
+			//$mydata_QR = '<a href="' . $xmlreply->response[0]->qrUrl . '" target="_blank">Επιβεβαίωση Παραστατικού</a>';
 			$mydata_invoiceUid = $xmlreply->response[0]->invoiceUid;
 			$update_query = "UPDATE ".$dolibarr_main_db_prefix."facture left join ".$dolibarr_main_db_prefix."facture_extrafields on ".$dolibarr_main_db_prefix."facture_extrafields.fk_object = ".$dolibarr_main_db_prefix."facture.rowid set mydata_reply ='$mydata', mydata_reply_QR ='$mydata_QR', mydata_reply_invoiceUid = '$mydata_invoiceUid', mydata_check='1' where ".$dolibarr_main_db_prefix."facture.rowid=" . $rowid;
 			$update_result = mysqli_query($con, $update_query);
