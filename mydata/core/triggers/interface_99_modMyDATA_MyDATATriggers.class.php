@@ -292,6 +292,79 @@ class InterfaceMyDATATriggers extends DolibarrTriggers
             } 
         }
 	}
+
+			case 'BILLREC_CREATE': {
+        if ($object->type == Facture::TYPE_STANDARD) {
+            $subtypearray = $object->getArrayOfInvoiceSubtypes(1);
+            $subtype = GETPOST('subtype');
+
+            foreach ($subtypearray as $code => $rowid) {
+                if ($rowid == $subtype) {
+                    $selectedcode = $code;
+                    break;
+                }
+            }
+
+            if (in_array($selectedcode, array('1.1', '1.2', '1.3', '1.4', '1.5', '1.6'))) {
+
+                $sql1 = "UPDATE ".MAIN_DB_PREFIX."facture_rec INNER JOIN ".MAIN_DB_PREFIX."facture_rec_extrafields ON ".MAIN_DB_PREFIX."facture_rec.rowid = ".MAIN_DB_PREFIX."facture_rec_extrafields.fk_object set mydata_type ='0' ORDER BY ".MAIN_DB_PREFIX."facture_rec.rowid DESC LIMIT 1";	
+		
+                $resql = $this->db->query($sql1);
+                if (!$resql) {
+                    $error++;
+                }
+
+
+            } elseif (in_array($selectedcode, array('2.1', '2.2', '2.3', '2.4'))) {
+                $sql1 = "UPDATE ".MAIN_DB_PREFIX."facture_rec INNER JOIN ".MAIN_DB_PREFIX."facture_rec_extrafields ON ".MAIN_DB_PREFIX."facture_rec.rowid = ".MAIN_DB_PREFIX."facture_rec_extrafields.fk_object set mydata_type ='1' ORDER BY ".MAIN_DB_PREFIX."facture_rec.rowid DESC LIMIT 1";	
+		
+                $resql = $this->db->query($sql1);
+                if (!$resql) {
+                    $error++;
+                }
+            } elseif (in_array($selectedcode, array('11.1'))) {
+                $sql1 = "UPDATE ".MAIN_DB_PREFIX."facture_rec INNER JOIN ".MAIN_DB_PREFIX."facture_rec_extrafields ON ".MAIN_DB_PREFIX."facture_rec.rowid = ".MAIN_DB_PREFIX."facture_rec_extrafields.fk_object set mydata_type ='2' ORDER BY ".MAIN_DB_PREFIX."facture_rec.rowid DESC LIMIT 1";	
+		
+                $resql = $this->db->query($sql1);
+                if (!$resql) {
+                    $error++;
+                }
+            } elseif (in_array($selectedcode, array('11.2'))) {
+            
+                $sql1 = "UPDATE ".MAIN_DB_PREFIX."facture_rec INNER JOIN ".MAIN_DB_PREFIX."facture_rec_extrafields ON ".MAIN_DB_PREFIX."facture_rec.rowid = ".MAIN_DB_PREFIX."facture_rec_extrafields.fk_object set mydata_type ='3' ORDER BY ".MAIN_DB_PREFIX."facture_rec.rowid DESC LIMIT 1";	
+		
+                $resql = $this->db->query($sql1);
+                if (!$resql) {
+                    $error++;
+                }
+            } 
+        } elseif (GETPOST('type') == Facture::TYPE_CREDIT_NOTE) {
+            $subtypearray = $object->getArrayOfInvoiceSubtypes(1);
+            $subtype = GETPOST('subtype');
+
+            foreach ($subtypearray as $code => $rowid) {
+                if ($rowid == $subtype) {
+                    $selectedcode = $code;
+                    break;
+                }
+            }
+            if (in_array($selectedcode, array('5.2'))) {
+                $sql1 = "UPDATE ".MAIN_DB_PREFIX."facture_rec INNER JOIN ".MAIN_DB_PREFIX."facture_rec_extrafields ON ".MAIN_DB_PREFIX."facture_rec.rowid = ".MAIN_DB_PREFIX."facture_rec_extrafields.fk_object set mydata_type ='4' ORDER BY ".MAIN_DB_PREFIX."facture_rec.rowid DESC LIMIT 1";	
+		
+                $resql = $this->db->query($sql1);
+                if (!$resql) {
+                    $error++;
+                }
+            } elseif (in_array($selectedcode, array('11.4'))) {
+                $sql1 = "UPDATE ".MAIN_DB_PREFIX."facture_rec INNER JOIN ".MAIN_DB_PREFIX."facture_rec_extrafields ON ".MAIN_DB_PREFIX."facture_rec.rowid = ".MAIN_DB_PREFIX."facture_rec_extrafields.fk_object set mydata_type ='5' ORDER BY ".MAIN_DB_PREFIX."facture_rec.rowid DESC LIMIT 1";	
+		
+                $resql = $this->db->query($sql1);
+                if (!$resql) {
+                    $error++;
+                }
+            } 
+        }
+	}		
 			//case 'BILL_MODIFY':
 			//case 'BILL_VALIDATE': 
 			//case 'BILL_UNVALIDATE':
