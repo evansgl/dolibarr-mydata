@@ -1,0 +1,51 @@
+<?php
+/**
+ * This is an automatically generated baseline for Phan issues.
+ * When Phan is invoked with --load-baseline=path/to/baseline.php,
+ * The pre-existing issues listed in this file won't be emitted.
+ *
+ * This file can be updated by invoking Phan with --save-baseline=path/to/baseline.php
+ * (can be combined with --load-baseline)
+ */
+return [
+    // # Issue statistics:
+    // PhanTypeMismatchArgument : 150+ occurrences
+    // PhanUndeclaredGlobalVariable : 50+ occurrences
+    // PhanTypeMismatchArgumentNullable : 15+ occurrences
+    // PhanTypeMismatchArgumentProbablyReal : 15+ occurrences
+    // PhanPluginDuplicateExpressionAssignmentOperation : 10+ occurrences
+    // PhanTypeMismatchArgumentInternal : 10+ occurrences
+    // PhanTypeMismatchArgumentInternalProbablyReal : 8 occurrences
+    // PhanPluginDuplicateConditionalTernaryDuplication : 7 occurrences
+    // PhanDeprecatedProperty : 5 occurrences
+    // PhanPossiblyUndeclaredGlobalVariable : 4 occurrences
+    // PhanUndeclaredProperty : 4 occurrences
+    // PhanPluginSimplifyExpressionBool : 3 occurrences
+    // PhanPossiblyUndeclaredVariable : 3 occurrences
+    // PhanUndeclaredMethod : 3 occurrences
+    // PhanUndeclaredVariableDim : 3 occurrences
+    // PhanPluginMoreSpecificActualReturnType : 2 occurrences
+    // PhanTypeExpectedObjectOrClassName : 2 occurrences
+    // PhanTypeInvalidLeftOperandOfNumericOp : 2 occurrences
+    // PhanTypeInvalidRightOperandOfNumericOp : 2 occurrences
+    // PhanUndeclaredVariable : 2 occurrences
+    // PhanEmptyFQSENInClasslike : 1 occurrence
+    // PhanParamTooMany : 1 occurrence
+    // PhanPluginDuplicateAdjacentStatement : 1 occurrence
+    // PhanPluginDuplicateIfStatements : 1 occurrence
+    // PhanPluginRedundantAssignment : 1 occurrence
+    // PhanRedefineClass : 1 occurrence
+    // PhanTypeInvalidLeftOperandOfAdd : 1 occurrence
+    // PhanTypeMismatchArgumentNullableInternal : 1 occurrence
+    // PhanTypeSuspiciousStringExpression : 1 occurrence
+
+    // Currently, file_suppressions and directory_suppressions are the only supported suppressions
+    'file_suppressions' => [
+        'mydata/admin/about.php' => ['PhanPluginDuplicateConditionalTernaryDuplication'],
+        'mydata/admin/setup.php' => ['PhanPluginDuplicateConditionalTernaryDuplication'],
+        'mydata/core/modules/facture/doc/pdf_sponge.modules.php' => ['PhanPluginDuplicateConditionalTernaryDuplication'],
+        'mydata/myobject_contact.php' => ['PhanPluginDuplicateConditionalTernaryDuplication'],
+    ],
+    // 'directory_suppressions' => ['src/directory_name' => ['PhanIssueName1', 'PhanIssueName2']] can be manually added if needed.
+    // (directory_suppressions will currently be ignored by subsequent calls to --save-baseline, but may be preserved in future Phan releases)
+];
